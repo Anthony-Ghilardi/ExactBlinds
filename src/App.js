@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import FauxWood from "./components/FauxWood/FauxWood";
 import Vinyl from "./components/Vinyl/Vinyl";
-import Cellular from "./Cellular/Cellular";
+import Cellular from "./components/Cellular/Cellular";
 
 
 function App() {

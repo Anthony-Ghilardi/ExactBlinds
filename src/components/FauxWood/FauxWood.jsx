@@ -2,6 +2,8 @@ import React from "react";
 import './faux-wood.css'
 
 export default function FauxWood() {
+    let Ogblinds = 0;
+    let newBlinds = 0;
 
     return (
         <div>
