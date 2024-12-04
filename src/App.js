@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/Home/Home";
+import FauxWood from "./components/FauxWood/FauxWood";
+import Vinyl from "./components/Vinyl/Vinyl";
+import Cellular from "./Cellular/Cellular";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/fauxWood" element={<FauxWood />} />
+        <Route path="/cellular" element={<Cellular />} />
+        <Route path="/vinyl" element={<Vinyl />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
