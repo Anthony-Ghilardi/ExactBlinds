@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./faux-wood.css";
+import TapeMeasure from "../../TapeMeasure/TapeMeasure";
 
 export default function FauxWood() {
   const [OriginalValue, setOriginalValue] = useState("");
   const [DesiredValue, setDesiredValue] = useState("");
   const [Cut, setCut] = useState("");
+  const [IsHidden, setIsHidden] = useState(false);
 
   const handleOriginalInput = (event) => {
     const OriginalValue = event.target.value;
@@ -24,14 +26,37 @@ export default function FauxWood() {
     }
   };
 
+  function fractionToDecimal(input) {
+    if (!input) return NaN;
+
+    let [whole, fraction] = input.trim().split(" ");
+    let result = parseInt(whole) || 0;
+
+    if(fraction && fraction.includes("/")) {
+      let [numerator, denominator] = fraction.split("/");
+      if (denominator) {
+        result += parseInt(numerator) / parseInt(denominator);
+      }
+    }
+
+    return result;
+  };
+
   const handleCut = (event) => {
     event.preventDefault();
-    let blindWidth = OriginalValue;
-    let blindCut = DesiredValue;
+    let blindWidth = fractionToDecimal(OriginalValue);
+    let blindCut = fractionToDecimal(DesiredValue);
+    let subtraction = blindWidth - blindCut;
+    let Cut = subtraction / 2;
+    setCut(Cut);
+    console.log(Cut)
     console.log(blindWidth);
     console.log(blindCut);
-    // setCut();
-    // console.log()
+  };
+
+  
+  const toggleHiddenElement = () => {
+    setIsHidden(!IsHidden);
   };
 
   return (
@@ -65,10 +90,11 @@ export default function FauxWood() {
         </fieldset>
       </form>
       <div className="cut-showcase">
-        <h2>Display Output here</h2>
+        <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
       </div>
-      <div>
-        Add hidden tape measure picture to help people who cant read one
+      <div id="tape-measure-container">
+        <button onClick={toggleHiddenElement}>Need help reading a tape measure click me!</button>
+        {IsHidden &&  <TapeMeasure />}
       </div>
     </div>
   );
