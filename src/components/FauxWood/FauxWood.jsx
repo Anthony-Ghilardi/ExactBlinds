@@ -7,6 +7,7 @@ export default function FauxWood() {
   const [DesiredValue, setDesiredValue] = useState("");
   const [Cut, setCut] = useState("");
   const [IsHidden, setIsHidden] = useState(false);
+  const [HideResult, setHideResult] = useState(false);
 
   const handleOriginalInput = (event) => {
     const OriginalValue = event.target.value;
@@ -32,7 +33,7 @@ export default function FauxWood() {
     let [whole, fraction] = input.trim().split(" ");
     let result = parseInt(whole) || 0;
 
-    if(fraction && fraction.includes("/")) {
+    if (fraction && fraction.includes("/")) {
       let [numerator, denominator] = fraction.split("/");
       if (denominator) {
         result += parseInt(numerator) / parseInt(denominator);
@@ -40,7 +41,7 @@ export default function FauxWood() {
     }
 
     return result;
-  };
+  }
 
   const handleCut = (event) => {
     event.preventDefault();
@@ -49,23 +50,23 @@ export default function FauxWood() {
     let subtraction = blindWidth - blindCut;
     let Cut = subtraction / 2;
     setCut(Cut);
-    console.log(Cut)
+    setHideResult(true);
+    console.log(Cut);
     console.log(blindWidth);
     console.log(blindCut);
   };
 
-  
   const toggleHiddenElement = () => {
     setIsHidden(!IsHidden);
   };
 
   return (
     <div>
-      <h1>Faux Wood Blinds</h1>
-      <h2>Please enter your measurements</h2>
-      <form onSubmit={handleCut}>
+      <h1 className="faux-wood-header">Faux Wood Blinds</h1>
+      <h2 className="measurement-header">Please enter your measurements</h2>
+      <form className="faux-wood-form" onSubmit={handleCut}>
         <fieldset>
-          <label>
+          <label className="faux-input-one">
             Enter the width of your current blind
             <input
               type="text"
@@ -74,7 +75,7 @@ export default function FauxWood() {
               placeholder="Example: 30 1/2"
             />
           </label>
-          <label>
+          <label className="faux-input-two">
             Enter the desired width of your blind
             <input
               type="test"
@@ -83,18 +84,19 @@ export default function FauxWood() {
               placeholder="Example: 28 1/2"
             />
           </label>
-          <input 
-            type="submit"
-            value="Submit"
-          />
+          <input type="submit" value="Submit" className="faux-submit-button" />
         </fieldset>
       </form>
-      <div className="cut-showcase">
-        <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
-      </div>
-      <div id="tape-measure-container">
-        <button onClick={toggleHiddenElement}>Need help reading a tape measure click me!</button>
-        {IsHidden &&  <TapeMeasure />}
+      {HideResult && (
+        <div className="cut-showcase">
+          <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
+        </div>
+      )}
+      <div className="tape-measure-button">
+        <button onClick={toggleHiddenElement}>
+          {IsHidden ? "Hide tape measure" : "Show tape measure"}
+        </button>
+        {IsHidden && <TapeMeasure />}
       </div>
     </div>
   );
