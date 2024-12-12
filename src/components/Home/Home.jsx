@@ -1,13 +1,13 @@
 import React from "react";
-import Navbar from "../Navbar/Navbar";
 import BlindCotainer from "../BlindContainer/BlindContainer";
+import HomeNavbar from "../HomeNavbar/HomeNavbar";
 
 export default function Home() {
 
 
     return(
         <div>
-            <Navbar />
+            <HomeNavbar />
             <BlindCotainer />
         </div>
     )

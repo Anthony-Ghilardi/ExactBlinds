@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./faux-wood.css";
 import TapeMeasure from "../../TapeMeasure/TapeMeasure";
+import Navbar from "../Navbar/Navbar";
 
 export default function FauxWood() {
   const [OriginalValue, setOriginalValue] = useState("");
@@ -62,6 +63,7 @@ export default function FauxWood() {
 
   return (
     <div>
+      <Navbar />
       <h1 className="faux-wood-header">Faux Wood Blinds</h1>
       <h2 className="measurement-header">Please enter your measurements</h2>
       <form className="faux-wood-form" onSubmit={handleCut}>

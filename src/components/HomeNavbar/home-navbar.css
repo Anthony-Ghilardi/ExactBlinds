@@ -1,4 +1,4 @@
-.navbar-container {
+.home-navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,48 +9,30 @@
   padding: 1rem;
 }
 
-.navbar-left .navbar-logo {
+.home-navbar-left .home-navbar-logo {
   font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
   text-decoration: none;
 }
 
-.navbar-logo-img {
+.home-navbar-logo-img {
   width: 100px;
   height: auto;
 }
 
-.navbar-center .navbar-links {
-  list-style-type: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-center .navbar-links li {
-  padding: 2rem;
-  margin-right: 1rem;
-}
-
-.navbar-center .navbar-links a {
-  color: #fff;
-  font-size: 1.5rem;
-  text-decoration: none;
-}
-
-.navbar-right {
+.home-navbar-right {
   display: flex;
   align-items: center;
 }
 
-.navbar-right {
+.home-navbar-right {
   color: #fff;
   text-decoration: none;
   margin-left: 1rem;
 }
 
-.navbar-right .contact-link {
+.home-navbar-right .home-contact-link {
   color: #fff;
   border-radius: 50%;
   padding: 0.2rem 0.5rem;
