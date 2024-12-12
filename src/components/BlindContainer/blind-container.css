@@ -2,7 +2,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
     padding-top: 2rem;
-    justify-content: space-evenly;
+    justify-content: space-between;
+}
+
+.faux-wood-cotainer {
+    flex: 1;
+}
+.faux-wood-button {
+    width: 20%;
+    margin: 1rem;
+}
+
+.faux-wood-image{
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.cellular-container {
+    flex: 1;
+}
+
+.cellular-button {
+    width: 20%;
+    margin: 1rem;
+}
+
+.cellular-shade-image {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
 }
