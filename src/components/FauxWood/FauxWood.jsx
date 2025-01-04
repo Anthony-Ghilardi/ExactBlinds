@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { Bounce } from "react-toastify";
 import "./faux-wood.css";
 import TapeMeasure from "../../TapeMeasure/TapeMeasure";
 import Navbar from "../Navbar/Navbar";
@@ -46,10 +48,40 @@ export default function FauxWood() {
 
   const handleCut = (event) => {
     event.preventDefault();
+    if (OriginalValue === ""|| DesiredValue === ""){
+      toast.warn('Please enter blind measurements', {
+        position: "bottom-center",
+        autoClose: 10000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+        setCut("");
+        setHideResult(false);
+        return
+    }
     let blindWidth = fractionToDecimal(OriginalValue);
     let blindCut = fractionToDecimal(DesiredValue);
     let subtraction = blindWidth - blindCut;
     let Cut = subtraction / 2;
+
+    if(Cut <= 1/4) {
+      toast.warn('This cut may be too short consider using a larger blind to achieve the desired size', {
+        position: "bottom-center",
+        autoClose: 10000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+    }
     setCut(Cut);
     setHideResult(true);
     console.log(Cut);
@@ -64,6 +96,19 @@ export default function FauxWood() {
   return (
     <div>
       <Navbar />
+      <ToastContainer 
+        position="bottom-center"
+        autoClose={10000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <h1 className="faux-wood-header">Faux Wood Blinds</h1>
       <h2 className="measurement-header">Please enter your measurements</h2>
       <form className="faux-wood-form" onSubmit={handleCut}>
@@ -80,13 +125,13 @@ export default function FauxWood() {
           <label className="faux-input-two">
             Enter the desired width of your blind
             <input
-              type="test"
+              type="text"
               value={DesiredValue}
               onChange={handleDesiredInput}
               placeholder="Example: 28 1/2"
             />
           </label>
-          <input type="submit" value="Submit" className="faux-submit-button" />
+          <input type="submit" value="Submit" className="faux-submit-button"/>
         </fieldset>
       </form>
       {HideResult && (
