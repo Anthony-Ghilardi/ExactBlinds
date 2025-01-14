@@ -69,8 +69,39 @@ export default function FauxWood() {
     let subtraction = blindWidth - blindCut;
     let Cut = subtraction / 2;
 
+    if(Cut <= 0) {
+      toast.warn('This measurement is negative or zero please enter a different size.',{
+        position: "bottom-center",
+        autoClose: 10000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,        
+      });
+      setCut("");
+      setHideResult(false);
+      return
+    }
+
     if(Cut <= 1/4) {
       toast.warn('This cut may be too short consider using a larger blind to achieve the desired size', {
+        position: "bottom-center",
+        autoClose: 10000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+    }
+
+    if(Cut >= 5) {
+      toast.warn('This cut may be too large consider using a larger blind to achieve the desired size', {
         position: "bottom-center",
         autoClose: 10000,
         hideProgressBar: false,
