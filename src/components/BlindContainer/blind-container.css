@@ -1,38 +1,69 @@
+button {
+    all: unset;
+}
+
 .blind-container-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 2rem;
-    justify-content: space-between;
+    padding: 3rem;
+    justify-content: space-evenly;
 }
 
-.faux-wood-cotainer {
-    flex: 1;
+.blind-container-faux-wood {
+    flex: 0 1 auto;
+    text-align: center;
 }
 .faux-wood-button {
-    width: 20%;
-    margin: 1rem;
+    width: 450px;
+    height: 400px;
+    border-radius: 1rem;
+    border: solid 3px;
+    border:solid #f9630d 3px;
+    padding: .5rem;
 }
 
 .faux-wood-image{
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
+    width: 400px;
+    height: 350px;
+    object-fit: cover;
 }
 
-.cellular-container {
-    flex: 1;
+.blind-container-cellular {
+    flex: 0 1 auto;
+    text-align: center;
 }
 
 .cellular-button {
-    width: 20%;
-    margin: 1rem;
+    width: 450px;
+    height: 400px;
+    border-radius: 1rem;
+    border: solid 3px;
+    border:solid #f9630d 3px;
+    padding: .5rem;
 }
 
 .cellular-shade-image {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
+    width: 400px;
+    height: 350px;
+    object-fit: cover;
+}
+
+.blind-container-vinyl{
+    flex: 0 1 auto;
+    text-align: center;
+}
+
+.vinyl-button{
+    width: 450px;
+    height: 400px;
+    border-radius: 1rem;
+    border:solid #f9630d 3px;
+    padding: .5rem;
+}
+
+.vinyl-blind-image {
+    width: 400px;
+    height: 350px;
+    object-fit: cover;
 }
