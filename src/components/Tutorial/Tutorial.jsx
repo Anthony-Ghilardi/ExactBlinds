@@ -8,8 +8,7 @@ export default function Tutorial() {
   return (
     <div>
       <Navbar />
-      <div className="tutorial-body-container">
-        <article className="intro-article">
+      <article className="intro-article">
           <h1>Measuring your window</h1>
           <p>
             There are two ways in which Faux Wood, Cellular Shades, and Vinyl
@@ -19,8 +18,8 @@ export default function Tutorial() {
             details about how to measure your winodw for both of these
             installations.
           </p>
-          <img className="inside-mount-image" src={InsideMountHelper} alt="Example image of inside mount measuremenets"/>
         </article>
+      <div className="tutorial-body-container">
         <article className="inside-mount-article">
           <h2>Inside Mount</h2>
           <p>
@@ -30,16 +29,19 @@ export default function Tutorial() {
             of your window in three different places. Once you do so select the
             smallest of your three measurements to serve as your width. Next you
             will measure the length of your window. To do so measure from the
-            top of the window opening to the top of the window sill. Next you
-            check you local hardware store and select the blind of your choosing
-            and the closest to your window size. In some cases your window size
+            top of the window opening to the top of the window sill. Next visit
+            your local hardware store and select the blind of your choosing
+            that is closest to your window size. In some cases your window size
             may not require the blinds to be cut, however in the case they do
-            need to be cut select an option at the top of this page for your
-            corresponding blind and enter the measurements of the blind you
+            need to be cut select the option at the top of this page for your
+            corresponding blind type and enter the measurements of the blind you
             purchased along with the width of your current window. An estimated
             size for your window will be calculated.
           </p>
         </article>
+        <div>
+          <img className="inside-mount-image" src={InsideMountHelper} alt="Example of inside mount measuremenets"/>
+        </div>
         <article className="outside-mount-article">
           <h3>Outside Mount</h3>
           <p>
@@ -54,8 +56,10 @@ export default function Tutorial() {
             Measusre to a length which you find suitable, a three inch overlap
             is a reccomended overlap.
           </p>
-          <img className="outside-mount-image" src={OutsideMountHelper} alt="Example image of outside mount measuremenets"/>
         </article>
+        <div>
+          <img className="outside-mount-image" src={OutsideMountHelper} alt="Example of outside mount measuremenets"/>
+        </div>
       </div>
     </div>
   );

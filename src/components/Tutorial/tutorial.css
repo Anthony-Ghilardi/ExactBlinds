@@ -1,4 +1,4 @@
-.tutorial-body-container{
+/* .tutorial-body-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,12 +6,68 @@
     margin-top: 3rem;
     margin-left: 6rem;
     margin-right: 6rem;
+} */
+
+.intro-article{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.intro-article h1 {
+    font-family: "Ultra", serif;
+    font-size: 4rem;
+    font-weight: 100;
+}
+
+.intro-article p {
+    font-size: 1.5rem;
+}
+
+.tutorial-body-container{
+    width: 70%;
+    display:grid;
+    grid-template-columns: 2fr 2fr;
+    grid-row: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    place-content: center;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    border: solid #f9630d 3px;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 0 10px 10px #D3D3D3;
+}
+
+.inside-mount-article h2{
+    font-family: "Ultra", serif;
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+.inside-mount-article p {
+    font-size: 1.2rem;
 }
 
 .inside-mount-image {
     width: 500px;
     height: 600px;
     object-fit: cover;
+}
+
+.outside-mount-article h3{
+    font-family: "Ultra", serif;
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+.outside-mount-article p {
+    font-size: 1.2rem;
 }
 
 .outside-mount-image {
