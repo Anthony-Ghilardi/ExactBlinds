@@ -14,6 +14,13 @@ button {
     flex: 0 1 auto;
     text-align: center;
 }
+
+.blind-container-faux-wood h1 {
+    font-family: "Ultra", serif;
+    font-size: 2.5rem;
+    font-weight: 100;
+}
+
 .faux-wood-button {
     width: 450px;
     height: 400px;
@@ -21,6 +28,12 @@ button {
     border: solid 3px;
     border:solid #f9630d 3px;
     padding: .5rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.faux-wood-button:hover {
+    box-shadow: 0 0 3px 3px #808080;
+    transform: scale(1.02);
 }
 
 .faux-wood-image{
@@ -34,6 +47,12 @@ button {
     text-align: center;
 }
 
+.blind-container-cellular h1{
+    font-family: "Ultra", serif;
+    font-size: 2.5rem;
+    font-weight: 100;
+}
+
 .cellular-button {
     width: 450px;
     height: 400px;
@@ -41,6 +60,12 @@ button {
     border: solid 3px;
     border:solid #f9630d 3px;
     padding: .5rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.cellular-button:hover {
+    box-shadow: 0 0 3px 3px #808080;
+    transform: scale(1.02);
 }
 
 .cellular-shade-image {
@@ -49,9 +74,15 @@ button {
     object-fit: cover;
 }
 
-.blind-container-vinyl{
+.blind-container-vinyl {
     flex: 0 1 auto;
     text-align: center;
+}
+
+.blind-container-vinyl h1 {
+    font-family: "Ultra", serif;
+    font-size: 2.5rem;
+    font-weight: 100;
 }
 
 .vinyl-button{
@@ -60,6 +91,12 @@ button {
     border-radius: 1rem;
     border:solid #f9630d 3px;
     padding: .5rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.vinyl-button:hover {
+    box-shadow: 0 0 3px 3px #808080;
+    transform: scale(1.02);
 }
 
 .vinyl-blind-image {

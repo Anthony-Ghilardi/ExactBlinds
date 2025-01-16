@@ -37,6 +37,11 @@
   color: #fff;
   font-size: 1.5rem;
   text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.navbar-center .navbar-links a:hover {
+  color: #D3D3D3;
 }
 
 .navbar-right {
@@ -56,4 +61,9 @@
   padding: 0.2rem 0.5rem;
   font-size: 1.5rem;
   text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.navbar-right .contact-link:hover {
+  color: #D3D3D3;
 }
