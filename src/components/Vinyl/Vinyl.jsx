@@ -148,37 +148,39 @@ export default function Vinyl() {
         theme="light"
         transition={Bounce}
       />
-      <h1 className="faux-wood-header">Vinyl Blinds</h1>
-      <h2 className="measurement-header">Please enter your measurements</h2>
-      <form className="faux-wood-form" onSubmit={handleCut}>
-        <fieldset>
-          <label className="faux-input-one">
+      <h1 className="vinyl-header">Vinyl Blinds</h1>
+      <h2 className="vinyl-measurement-header">Please enter your measurements</h2>
+      <form className="vinyl-form" onSubmit={handleCut}>
+        <fieldset className="vinyl-fieldset">
+          <label className="vinyl-input-one">
             Enter the width of your current blind
             <input
               type="text"
+              className="vinyl-text-input"
               value={OriginalValue}
               onChange={handleOriginalInput}
               placeholder="Example: 30 1/2"
             />
           </label>
-          <label className="faux-input-two">
+          <label className="vinyl-input-two">
             Enter the desired width of your blind
             <input
               type="text"
+              className="vinyl-text-input"
               value={DesiredValue}
               onChange={handleDesiredInput}
               placeholder="Example: 28 1/2"
             />
           </label>
-          <input type="submit" value="Submit" className="faux-submit-button" />
+          <input type="submit" value="Submit" className="vinyl-submit-button" />
         </fieldset>
       </form>
       {HideResult && (
-        <div className="cut-showcase">
+        <div className="vinyl-cut-showcase">
           <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
         </div>
       )}
-      <div className="tape-measure-button">
+      <div className="vinyl-tape-measure-button">
         <button onClick={toggleHiddenElement}>
           {IsHidden ? "Hide tape measure" : "Show tape measure"}
         </button>

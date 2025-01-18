@@ -145,37 +145,39 @@ export default function Cellular() {
         theme="light"
         transition={Bounce}
       />
-      <h1 className="faux-wood-header">Cellular Shades</h1>
-      <h2 className="measurement-header">Please enter your measurements</h2>
-      <form className="faux-wood-form" onSubmit={handleCut}>
-        <fieldset>
-          <label className="faux-input-one">
+      <h1 className="cellular-header">Cellular Shades</h1>
+      <h2 className="cellular-measurement-header">Please enter your measurements</h2>
+      <form className="cellular-form" onSubmit={handleCut}>
+        <fieldset className="cellular-fieldset">
+          <label className="cellular-input-one">
             Enter the width of your current blind
             <input
               type="text"
+              className="cellular-text-input"
               value={OriginalValue}
               onChange={handleOriginalInput}
               placeholder="Example: 30 1/2"
             />
           </label>
-          <label className="faux-input-two">
+          <label className="cellular-input-two">
             Enter the desired width of your blind
             <input
               type="text"
+              className="cellular-text-input"
               value={DesiredValue}
               onChange={handleDesiredInput}
               placeholder="Example: 28 1/2"
             />
           </label>
-          <input type="submit" value="Submit" className="faux-submit-button" />
+          <input type="submit" value="Submit" className="cellular-submit-button"/>
         </fieldset>
       </form>
       {HideResult && (
-        <div className="cut-showcase">
+        <div className="cellular-cut-showcase">
           <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
         </div>
       )}
-      <div className="tape-measure-button">
+      <div className="cellular-tape-measure-button">
         <button onClick={toggleHiddenElement}>
           {IsHidden ? "Hide tape measure" : "Show tape measure"}
         </button>

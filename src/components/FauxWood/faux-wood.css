@@ -10,7 +10,7 @@
     font-weight: 100;
 }
 
-.measurement-header {
+.faux-measurement-header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,8 +27,14 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 3rem;
+    font-size: 2rem;
+}
+
+.faux-wood-fieldset {
+    border: solid #f9630d 3px;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px 10px #D3D3D3;
 }
 
 .faux-input-one {
@@ -49,14 +55,30 @@
     padding-bottom: 1rem;
 }
 
+.faux-wood-text-input {
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
 .faux-submit-button {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: background-color 0.5s ease, transform 0.5s ease;
 }
 
-.cut-showcase {
+.faux-submit-button:hover {
+    background-color: #f9630d;
+    transform: scale(1.20);
+}
+
+.faux-cut-showcase {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,7 +87,7 @@
     padding-bottom: 1rem;
 }
 
-.tape-measure-button {
+.faux-tape-measure-button {
     display: flex;
     flex-direction: column;
     justify-content: center;

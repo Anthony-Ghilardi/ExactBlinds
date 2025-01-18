@@ -1,0 +1,98 @@
+.vinyl-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 4rem;
+    font-family: "Ultra", serif;
+    font-weight: 100;
+}
+
+.vinyl-measurement-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.vinyl-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 3rem;
+    font-size: 2rem;
+}
+
+.vinyl-fieldset {
+    border: solid #f9630d 3px;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px 10px #D3D3D3;
+}
+
+.vinyl-input-one {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.vinyl-input-two {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.vinyl-text-input {
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
+.vinyl-submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.vinyl-submit-button:hover {
+    background-color: #f9630d;
+    transform: scale(1.20);
+}
+
+.vinyl-cut-showcase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.vinyl-tape-measure-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}

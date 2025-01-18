@@ -141,13 +141,14 @@ export default function FauxWood() {
         transition={Bounce}
       />
       <h1 className="faux-wood-header">Faux Wood Blinds</h1>
-      <h2 className="measurement-header">Please enter your measurements</h2>
+      <h2 className="faux-measurement-header">Please enter your measurements</h2>
       <form className="faux-wood-form" onSubmit={handleCut}>
-        <fieldset>
+        <fieldset className="faux-wood-fieldset">
           <label className="faux-input-one">
             Enter the width of your current blind
             <input
               type="text"
+              className="faux-wood-text-input"
               value={OriginalValue}
               onChange={handleOriginalInput}
               placeholder="Example: 30 1/2"
@@ -157,6 +158,7 @@ export default function FauxWood() {
             Enter the desired width of your blind
             <input
               type="text"
+              className="faux-wood-text-input"
               value={DesiredValue}
               onChange={handleDesiredInput}
               placeholder="Example: 28 1/2"
@@ -166,11 +168,11 @@ export default function FauxWood() {
         </fieldset>
       </form>
       {HideResult && (
-        <div className="cut-showcase">
+        <div className="faux-cut-showcase">
           <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
         </div>
       )}
-      <div className="tape-measure-button">
+      <div className="faux-tape-measure-button">
         <button onClick={toggleHiddenElement}>
           {IsHidden ? "Hide tape measure" : "Show tape measure"}
         </button>
