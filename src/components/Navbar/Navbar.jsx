@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./navbar.css";
 import logo from "../../images/ExactBlindsLogoTransparent.jpg";
 
@@ -6,28 +7,32 @@ export default function Navbar() {
   return (
     <nav className="navbar-container">
       <div className="navbar-left">
-        <a href="/" className="navbar-logo">
-          <img className="navbar-logo-img" src={logo} alt="Exact Blinds Logo"></img>
-        </a>
-        </div>
-        <div className="navbar-center">
-          <ul className="navbar-links">
-            <li>
-              <a href="/fauxWood">Faux Wood</a>
-            </li>
-            <li>
-              <a href="/cellular">Cellular Shades</a>
-            </li>
-            <li>
-              <a href="/vinyl">Vinyl</a>
-            </li>
-          </ul>
-        </div>
-        <div className="navbar-right">
-            <a href="/contact" className="contact-link">
-            Developer
-            </a>
-        </div>
+        <Link to="/" className="navbar-logo">
+          <img
+            className="navbar-logo-img"
+            src={logo}
+            alt="Exact Blinds Logo"
+          ></img>
+        </Link>
+      </div>
+      <div className="navbar-center">
+        <ul className="navbar-links">
+          <li>
+            <Link to="/fauxWood">Faux Wood</Link>
+          </li>
+          <li>
+            <Link to="/cellular">Cellular Shades</Link>
+          </li>
+          <li>
+            <Link to="/vinyl">Vinyl</Link>
+          </li>
+        </ul>
+      </div>
+      <div className="navbar-right">
+        <Link to="/contact" className="contact-link">
+          Developer
+        </Link>
+      </div>
     </nav>
   );
 }

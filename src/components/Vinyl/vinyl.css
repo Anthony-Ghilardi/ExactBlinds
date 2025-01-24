@@ -18,6 +18,9 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
     font-size: 2rem;
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .vinyl-form {
@@ -29,6 +32,9 @@
     margin: 0 auto;
     padding: 3rem;
     font-size: 2rem;
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .vinyl-fieldset {
@@ -58,6 +64,9 @@
 .vinyl-text-input {
     font-size: 1.5rem;
     margin: 1rem;
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .vinyl-submit-button {
@@ -71,6 +80,9 @@
     font-weight: bold;
     font-size: 1.5rem;
     transition: background-color 0.5s ease, transform 0.5s ease;
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .vinyl-submit-button:hover {
@@ -85,6 +97,9 @@
     margin: 0 auto;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .vinyl-tape-measure-button {
@@ -95,4 +110,7 @@
     margin: 0 auto;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
 }
