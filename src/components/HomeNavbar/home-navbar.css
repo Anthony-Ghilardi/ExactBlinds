@@ -1,19 +1,17 @@
 .home-navbar-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   background-color: #f9630d;
-  color: #fff;
+  padding: 1rem 3rem;
   font-family: "Ultra", serif;
-  font-weight: 100;
-  padding: 1rem;
 }
 
-.home-navbar-left .home-navbar-logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff;
-  text-decoration: none;
+/* Logo */
+.home-navbar-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .navbar-logo-img {
@@ -23,48 +21,25 @@
   transition: all 0.3s ease;
 }
 
-.navbar-logo-img:hover {
-  box-shadow: 0 0 3px 3px #808080;
-}
-
-.home-navbar-center{
+/* Link section */
+.home-navbar-links {
+  flex: 1;
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
-}
-
-.home-navbar-tutorial {
-  color: #fff;
-  border-radius: 50%;
-  padding: 0.2rem 0.5rem;
-  font-size: 1.5rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.home-navbar-tutorial:hover {
-  color: #D3D3D3;
-}
-
-.home-navbar-right {
-  display: flex;
-  align-items: center;
-}
-
-.home-navbar-right {
-  color: #fff;
-  text-decoration: none;
   margin-left: 1rem;
+  margin-right: 2rem;
 }
 
-.home-navbar-right .home-contact-link {
+.home-navbar-link {
   color: #fff;
-  border-radius: 50%;
-  padding: 0.2rem 0.5rem;
   font-size: 1.5rem;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
+  font-size: 2rem;
 }
 
-.home-contact-link:hover {
+.home-navbar-link:hover {
   color: #D3D3D3;
 }
+

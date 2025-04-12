@@ -8,20 +8,17 @@ export default function HomeNavbar() {
     <nav className="home-navbar-container">
       <div className="home-navbar-left">
         <Link to="/" className="home-navbar-logo">
-          <img
-            className="navbar-logo-img"
-            src={logo}
-            alt="Exact Blinds Logo"
-          ></img>
+          <img className="navbar-logo-img" src={logo} alt="Exact Blinds Logo" />
         </Link>
       </div>
-      <div className="home-navbar-center">
-        <Link to="/howto" className="home-navbar-tutorial">
+      <div className="home-navbar-links">
+        <Link to="/howto" className="home-navbar-link">
           How To
         </Link>
-      </div>
-      <div className="home-navbar-right">
-        <Link to="/contact" className="home-contact-link">
+        <Link to="/designer" className="home-navbar-link">
+          Designer
+        </Link>
+        <Link to="/contact" className="home-navbar-link">
           Developer
         </Link>
       </div>

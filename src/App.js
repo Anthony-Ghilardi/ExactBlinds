@@ -6,6 +6,7 @@ import Vinyl from "./components/Vinyl/Vinyl";
 import Cellular from "./components/Cellular/Cellular";
 import Tutorial from "./components/Tutorial/Tutorial";
 import Contact from "./components/Contact/Contact";
+import Designer from "./components/Designer/Designer";
 
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/vinyl" element={<Vinyl />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/howto" element={<Tutorial />} />
+        <Route path="/designer" element={<Designer />} />
       </Routes>
     </BrowserRouter>
   );
