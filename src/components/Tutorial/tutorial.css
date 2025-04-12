@@ -1,76 +1,114 @@
-.intro-article{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 70%;
-    margin: 0 auto;
+.intro-article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 70%;
+  margin: 0 auto;
 }
 
 .intro-article h1 {
-    font-family: "Ultra", serif;
-    font-size: 4rem;
-    font-weight: 100;
+  font-family: "Ultra", serif;
+  font-size: 4rem;
+  font-weight: 100;
 }
 
 .intro-article p {
-    font-size: 1.5rem;
-    font-family: "Merriweather", serif;
-    font-weight: 400;
-    font-style: normal;
+  font-size: 1.5rem;
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
-.tutorial-body-container{
-    width: 70%;
-    display:grid;
-    grid-template-columns: 2fr 2fr;
-    grid-row: auto auto;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-    place-content: center;
-    margin: 0 auto;
-    margin-bottom: 3rem;
-    margin-top: 3rem;
-    border: solid #f9630d 3px;
-    border-radius: 1rem;
-    padding: 1rem;
-    box-shadow: 0 0 10px 10px #D3D3D3;
+.tutorial-body-container {
+  width: 70%;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  grid-row: auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  place-content: center;
+  margin: 3rem auto;
+  border: solid #f9630d 3px;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 0 10px 10px #d3d3d3;
 }
 
-.inside-mount-article h2{
-    font-family: "Ultra", serif;
-    font-size: 3rem;
-    font-weight: 100;
+.inside-mount-article h2 {
+  font-family: "Ultra", serif;
+  font-size: 3rem;
+  font-weight: 100;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .inside-mount-article p {
-    font-size: 1.2rem;
-    font-family: "Merriweather", serif;
-    font-weight: 400;
-    font-style: normal;
+  font-size: 1.2rem;
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
 .inside-mount-image {
-    width: 500px;
-    height: 600px;
-    object-fit: cover;
+  width: 500px;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
 }
 
-.outside-mount-article h3{
-    font-family: "Ultra", serif;
-    font-size: 3rem;
-    font-weight: 100;
+.outside-mount-article h2,
+.outside-mount-article h3 {
+  font-family: "Ultra", serif;
+  font-size: 3rem;
+  font-weight: 100;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .outside-mount-article p {
-    font-size: 1.2rem;
-    font-family: "Merriweather", serif;
-    font-weight: 400;
-    font-style: normal;
+  font-size: 1.2rem;
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
 .outside-mount-image {
-    width: 500px;
-    height: 600px;
-    object-fit: cover;
+  width: 500px;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tutorial-body-container ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tutorial-body-container ol li {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .tutorial-body-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .inside-mount-image,
+  .outside-mount-image {
+    width: 100%;
+    height: auto;
+  }
 }

@@ -2,63 +2,87 @@ import React from "react";
 import "./tutorial.css";
 import Navbar from "../Navbar/Navbar";
 import InsideMountHelper from "../../images/InsideMountHelper.jpg";
-import OutsideMountHelper from "../../images/OutsideMountHelper.jpg"
+import OutsideMountHelper from "../../images/OutsideMountHelper.jpg";
 
 export default function Tutorial() {
   return (
     <div>
       <Navbar />
       <article className="intro-article">
-          <h1>Measuring your window</h1>
-          <p>
-            There are two ways in which Faux Wood, Cellular Shades, and Vinyl
-            Blinds can be installed on a window. You may choose an Inside Mount
-            or an Outside Mount, both of these require different measurements in
-            order for a successful installation. Below you will find more
-            details about how to measure your winodw for both of these
-            installations.
-          </p>
-        </article>
+        <h1>Measuring Your Window</h1>
+        <p>
+          There are two ways to install Faux Wood, Cellular Shades, and Vinyl
+          Blinds on a window: Inside Mount and Outside Mount.
+        </p>
+        <p>
+          Each method requires different measurements for a successful
+          installation. Below, you'll find step-by-step instructions for
+          measuring your window based on the mount type.
+        </p>
+      </article>
+
       <div className="tutorial-body-container">
         <article className="inside-mount-article">
           <h2>Inside Mount</h2>
           <p>
-            What is an Inside Mount? An Inside mount is when the blind is
-            mounted or installed on the inside of the window casing. To measure
-            your window for an Inside Mount you should first measure the width
-            of your window in three different places. Once you do so select the
-            smallest of your three measurements to serve as your width. Next you
-            will measure the length of your window. To do so measure from the
-            top of the window opening to the top of the window sill. Next visit
-            your local hardware store and select the blind of your choosing
-            that is closest to your window size. In some cases your window size
-            may not require the blinds to be cut, however in the case they do
-            need to be cut select the option at the top of this page for your
-            corresponding blind type and enter the measurements of the blind you
-            purchased along with the width of your current window. An estimated
-            size for your window will be calculated.
+            An Inside Mount is when the blind is installed inside the window
+            casing.
           </p>
-        </article>
-        <div>
-          <img className="inside-mount-image" src={InsideMountHelper} alt="Example of inside mount measuremenets"/>
-        </div>
-        <article className="outside-mount-article">
-          <h3>Outside Mount</h3>
           <p>
-            What is an Outside Mount? An Outside Mount is when the blind is
-            mounted or installed on the outside of the window casing. To measure
-            your window for an Outside Mount you should first measure the exact
-            width of the outside perimeter of the window casing. Then you must
-            add a minimum of one and a half inches on both sides of the blind,
-            totally three inches total for optimal light control and privacy.
-            Next you will measure the length of the window, this is a more
-            flexible mesurement as you are not restricted by the window sill.
-            Measusre to a length which you find suitable, a three inch overlap
-            is a reccomended overlap.
+            <strong>Step 1:</strong> Measure the width of your window in three
+            different places — top, middle, and bottom. Record the smallest of
+            these three as your width.
+          </p>
+          <p>
+            <strong>Step 2:</strong> Measure the length of your window from the
+            top of the opening down to the window sill.
+          </p>
+          <p>
+            <strong>Step 3:</strong> Visit your local hardware store and choose
+            a blind closest to your measured size. In many cases, trimming may
+            not be necessary.
+          </p>
+          <p>
+            If trimming is required, click the option at the top of this page
+            for your blind type and enter both the purchased blind size and your
+            window's width to calculate the necessary cut.
           </p>
         </article>
+
         <div>
-          <img className="outside-mount-image" src={OutsideMountHelper} alt="Example of outside mount measuremenets"/>
+          <img
+            className="inside-mount-image"
+            src={InsideMountHelper}
+            alt="Example of inside mount measurements"
+          />
+        </div>
+
+        <article className="outside-mount-article">
+          <h2>Outside Mount</h2>
+          <p>
+            An Outside Mount is when the blind is installed on the outside of
+            the window casing.
+          </p>
+          <p>
+            <strong>Step 1:</strong> Measure the full width of the window casing
+            from edge to edge. Then add 1.5 inches to both the left and right
+            sides (3 inches total) to ensure full light coverage and better
+            privacy.
+          </p>
+          <p>
+            <strong>Step 2:</strong> Measure the height from the top of the
+            casing down to your desired blind length. You’re not limited by a
+            window sill, so choose a length that looks best. A 3-inch overlap is
+            recommended.
+          </p>
+        </article>
+
+        <div>
+          <img
+            className="outside-mount-image"
+            src={OutsideMountHelper}
+            alt="Example of outside mount measurements"
+          />
         </div>
       </div>
     </div>

@@ -10,6 +10,8 @@ export default function Cellular() {
   const [DesiredValue, setDesiredValue] = useState("");
   const [Cut, setCut] = useState("");
   const [IsHidden, setIsHidden] = useState(false);
+  const [ToggleAnimation, setToggleAnimation] = useState("fade-out");
+  const [ShouldRenderTape, setShouldRenderTape] = useState(false)
   const [HideResult, setHideResult] = useState(false);
 
   const handleOriginalInput = (event) => {
@@ -126,9 +128,20 @@ export default function Cellular() {
     console.log(blindCut);
   };
 
-  const toggleHiddenElement = () => {
-    setIsHidden(!IsHidden);
-  };
+  const controlVisibility = () => {
+    if(!IsHidden) {
+      setShouldRenderTape(true);
+      setToggleAnimation("fade-in");
+      setIsHidden(true);
+    } else {
+      setToggleAnimation("fade-out")
+      setTimeout(() => {
+        setShouldRenderTape(false); 
+        setIsHidden(false);
+      },400)
+    }
+  }
+
   return (
     <div>
       <Navbar />
@@ -178,10 +191,12 @@ export default function Cellular() {
         </div>
       )}
       <div className="cellular-tape-measure-button">
-        <button onClick={toggleHiddenElement}>
+        <button onClick={controlVisibility}>
           {IsHidden ? "Hide tape measure" : "Show tape measure"}
         </button>
-        {IsHidden && <TapeMeasure />}
+      </div>
+      <div className={`cellular-tape-measure-container ${ToggleAnimation}`}>
+        {ShouldRenderTape && <TapeMeasure />}
       </div>
     </div>
   );
