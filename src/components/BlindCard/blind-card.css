@@ -1,0 +1,49 @@
+.blind-card-container {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 1rem;
+    padding: 0.5rem;
+    border: solid #f9630d;
+    border-radius: 1rem;
+}
+
+.blind-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.card-width-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.card-width-input {
+    width: 25%;
+}
+
+.card-height-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.card-height-input {
+    width: 10%;
+}
+
+.blind-card-image {
+    padding-right: 30px;
+}

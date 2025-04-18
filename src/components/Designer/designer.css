@@ -1,0 +1,21 @@
+.create-card-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0.5rem;
+  border: solid #f9630d;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-style: normal;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.create-card-button:hover {
+  box-shadow: 0 0 3px 3px #808080;
+  transform: scale(1.02);
+}
