@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./blind-card.css";
 import BlindCardWindow from "../../images/BlindCardWindow.jpg";
 
-export default function BlindCard() {
+export default function BlindCard({id, removeCard}) {
   const [widthValue, setWidthValue] = useState("");
   const [heightValue, setHeightValue] = useState("");
 
@@ -49,6 +49,9 @@ export default function BlindCard() {
           src={BlindCardWindow}
           alt="Window for size reference"
         />
+      </div>
+      <div className="card-remove-btn-container">
+        <button className="card-remove-btn" onClick={() => removeCard(id)} type="button">Remove</button>
       </div>
     </div>
   );

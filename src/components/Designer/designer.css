@@ -1,3 +1,7 @@
+.create-card-btn-container {
+  margin-bottom: 1rem;
+}
+
 .create-card-button {
   display: flex;
   justify-content: center;
@@ -18,4 +22,14 @@
 .create-card-button:hover {
   box-shadow: 0 0 3px 3px #808080;
   transform: scale(1.02);
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 4rem;
 }

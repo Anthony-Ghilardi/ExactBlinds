@@ -47,3 +47,28 @@
 .blind-card-image {
     padding-right: 30px;
 }
+
+.card-remove-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-bottom: 1rem;
+}
+
+.card-remove-btn {
+    padding: 0.5rem;
+    border: solid #D2042D;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.card-remove-btn:hover {
+    background-color: #D2042D;
+}
