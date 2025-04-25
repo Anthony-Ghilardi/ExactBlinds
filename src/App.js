@@ -5,8 +5,9 @@ import FauxWood from "./components/FauxWood/FauxWood";
 import Vinyl from "./components/Vinyl/Vinyl";
 import Cellular from "./components/Cellular/Cellular";
 import Tutorial from "./components/Tutorial/Tutorial";
-import Contact from "./components/Contact/Contact";
 import Designer from "./components/Designer/Designer";
+import SignupPage from "./components/Signup-page/SignupPage";
+import LoginSplashPage from "./LoginSplashPage/LoginSplashPage";
 
 
 
@@ -18,9 +19,10 @@ function App() {
         <Route path="/fauxWood" element={<FauxWood />} />
         <Route path="/cellular" element={<Cellular />} />
         <Route path="/vinyl" element={<Vinyl />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/howto" element={<Tutorial />} />
         <Route path="/designer" element={<Designer />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginSplashPage />} />
       </Routes>
     </BrowserRouter>
   );

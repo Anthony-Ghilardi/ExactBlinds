@@ -29,8 +29,8 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-right">
-        <Link to="/contact" className="contact-link">
-          Developer
+        <Link to="/login" className="login-link">
+          Login
         </Link>
       </div>
     </nav>

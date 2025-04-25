@@ -18,8 +18,8 @@ export default function HomeNavbar() {
         <Link to="/designer" className="home-navbar-link">
           Designer
         </Link>
-        <Link to="/contact" className="home-navbar-link">
-          Developer
+        <Link to="/Login" className="home-navbar-link">
+          Login
         </Link>
       </div>
     </nav>
