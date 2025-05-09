@@ -16,11 +16,6 @@
   text-decoration: none;
 }
 
-.navbar-logo-img {
-  width: 100px;
-  height: auto;
-}
-
 .navbar-center .navbar-links {
   list-style-type: none;
   display: flex;

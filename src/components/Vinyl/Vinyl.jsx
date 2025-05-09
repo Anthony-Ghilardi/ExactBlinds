@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { Bounce } from "react-toastify";
 import "./vinyl.css";
 import TapeMeasure from "../../TapeMeasure/TapeMeasure";
@@ -126,9 +126,6 @@ export default function Vinyl() {
     }
     setCut(Cut);
     setHideResult(true);
-    console.log(Cut);
-    console.log(blindWidth);
-    console.log(blindCut);
   };
 
   const controlVisibility = () => {
@@ -148,19 +145,6 @@ export default function Vinyl() {
   return (
     <div>
       <Navbar />
-      <ToastContainer
-        position="bottom-center"
-        autoClose={10000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition={Bounce}
-      />
       <h1 className="vinyl-header">Vinyl Blinds</h1>
       <h2 className="vinyl-measurement-header">Please enter your measurements</h2>
       <form className="vinyl-form" onSubmit={handleCut}>

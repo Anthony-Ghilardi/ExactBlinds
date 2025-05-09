@@ -8,23 +8,36 @@ import Tutorial from "./components/Tutorial/Tutorial";
 import Designer from "./components/Designer/Designer";
 import SignupPage from "./components/Signup-page/SignupPage";
 import LoginSplashPage from "./LoginSplashPage/LoginSplashPage";
-
-
+import AccountHome from "./components/AccountHome/AccountHome";
+import AuthProvider from "./AuthProvider";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/fauxWood" element={<FauxWood />} />
-        <Route path="/cellular" element={<Cellular />} />
-        <Route path="/vinyl" element={<Vinyl />} />
-        <Route path="/howto" element={<Tutorial />} />
-        <Route path="/designer" element={<Designer />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginSplashPage />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+      <ToastContainer />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/fauxWood" element={<FauxWood />} />
+          <Route path="/cellular" element={<Cellular />} />
+          <Route path="/vinyl" element={<Vinyl />} />
+          <Route path="/howto" element={<Tutorial />} />
+          <Route path="/designer" element={<Designer />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginSplashPage />} />
+          <Route
+            path="/account"
+            element={
+              <ProtectedRoute>
+                <AccountHome />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

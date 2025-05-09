@@ -18,7 +18,6 @@ export default function BlindContainer() {
             src={FauxWoodBlindsImage}
             alt="Closed shutter designed by Freepik"
             onClick={() => {
-              console.log("redirecting...");
               navigate("/fauxWood");
             }}
           />
@@ -33,7 +32,6 @@ export default function BlindContainer() {
             src={CellularShadeImage}
             alt="Window Roller Shutters Set designed by Freepik"
             onClick={() => {
-              console.log("redirecting...");
               navigate("/cellular");
             }}
           />
@@ -48,7 +46,6 @@ export default function BlindContainer() {
             src={VinylBlindsImage}
             alt="Office desk still life designed by Freepik"
             onClick={() => {
-              console.log("redirecting...");
               navigate("/vinyl");
             }}
           />

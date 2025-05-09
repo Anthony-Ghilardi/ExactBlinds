@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { Bounce } from "react-toastify";
 import "./cellular.css";
 import TapeMeasure from "../../TapeMeasure/TapeMeasure";
@@ -123,9 +123,6 @@ export default function Cellular() {
     }
     setCut(Cut);
     setHideResult(true);
-    console.log(Cut);
-    console.log(blindWidth);
-    console.log(blindCut);
   };
 
   const controlVisibility = () => {
@@ -145,19 +142,6 @@ export default function Cellular() {
   return (
     <div>
       <Navbar />
-      <ToastContainer
-        position="bottom-center"
-        autoClose={10000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition={Bounce}
-      />
       <h1 className="cellular-header">Cellular Shades</h1>
       <h2 className="cellular-measurement-header">Please enter your measurements</h2>
       <form className="cellular-form" onSubmit={handleCut}>

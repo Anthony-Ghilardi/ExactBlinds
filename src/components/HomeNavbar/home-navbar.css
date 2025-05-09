@@ -17,8 +17,14 @@
 .navbar-logo-img {
   width: 100px;
   height: auto;
-  box-shadow: 0 0 3px 3px #D3D3D3;
   transition: all 0.3s ease;
+  background-color: #fff;
+  box-shadow: 0 0 3px 3px #d3d3d3;
+}
+
+.navbar-logo-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 6px 4px #808080;
 }
 
 /* Link section */
@@ -42,4 +48,3 @@
 .home-navbar-link:hover {
   color: #D3D3D3;
 }
-

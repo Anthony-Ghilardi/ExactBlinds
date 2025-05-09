@@ -1,9 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./navbar.css";
 import logo from "../../images/ExactBlindsLogoTransparent.jpg";
+import { AuthContext } from "../../AuthProvider";
 
 export default function Navbar() {
+  const location = useLocation();
+  const { user } = useContext(AuthContext);
+
   return (
     <nav className="navbar-container">
       <div className="navbar-left">
@@ -29,9 +33,16 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-right">
-        <Link to="/login" className="login-link">
-          Login
-        </Link>
+        {!user && location.pathname !== "/login" &&  location.pathname !== "/signup" && (
+          <Link to="/login" className="login-link">
+            Login
+          </Link>
+        )}
+        {user && location.pathname !== "/account" && user && (
+          <Link to="/account" className="home-navbar-link">
+            Account
+          </Link>
+        )}
       </div>
     </nav>
   );
