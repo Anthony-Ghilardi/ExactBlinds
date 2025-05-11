@@ -4,6 +4,7 @@ import { Bounce } from "react-toastify";
 import "./cellular.css";
 import TapeMeasure from "../../TapeMeasure/TapeMeasure";
 import Navbar from "../Navbar/Navbar";
+import Draggable from "react-draggable";
 
 export default function Cellular() {
   const [OriginalValue, setOriginalValue] = useState("");
@@ -11,7 +12,7 @@ export default function Cellular() {
   const [Cut, setCut] = useState("");
   const [IsHidden, setIsHidden] = useState(false);
   const [ToggleAnimation, setToggleAnimation] = useState("fade-out");
-  const [ShouldRenderTape, setShouldRenderTape] = useState(false)
+  const [ShouldRenderTape, setShouldRenderTape] = useState(false);
   const [HideResult, setHideResult] = useState(false);
 
   const handleOriginalInput = (event) => {
@@ -53,6 +54,7 @@ export default function Cellular() {
     if (OriginalValue === "" || DesiredValue === "") {
       toast.warn("Please enter blind measurements", {
         position: "bottom-center",
+        toastId: "cellular invalid",
         autoClose: 10000,
         hideProgressBar: false,
         closeOnClick: false,
@@ -71,21 +73,25 @@ export default function Cellular() {
     let subtraction = blindWidth - blindCut;
     let Cut = subtraction / 2;
 
-    if(Cut <= 0) {
-      toast.warn('This measurement is negative or zero please enter a different size.',{
-        position: "bottom-center",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,        
-      });
+    if (Cut <= 0) {
+      toast.warn(
+        "This measurement is negative or zero please enter a different size.",
+        {
+          position: "bottom-center",
+          toastId: "cellular invalid",
+          autoClose: 10000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        }
+      );
       setCut("");
       setHideResult(false);
-      return
+      return;
     }
 
     if (Cut <= 1 / 4) {
@@ -93,6 +99,7 @@ export default function Cellular() {
         "This cut may be too short consider using a larger blind to achieve the desired size",
         {
           position: "bottom-center",
+          toastId: "cellular invalid",
           autoClose: 10000,
           hideProgressBar: false,
           closeOnClick: false,
@@ -110,6 +117,7 @@ export default function Cellular() {
         "This cut may be too large consider using a larger blind to achieve the desired size",
         {
           position: "bottom-center",
+          toastId: "cellular invalid",
           autoClose: 10000,
           hideProgressBar: false,
           closeOnClick: false,
@@ -126,24 +134,41 @@ export default function Cellular() {
   };
 
   const controlVisibility = () => {
-    if(!IsHidden) {
+    if (!IsHidden) {
       setShouldRenderTape(true);
       setToggleAnimation("fade-in");
       setIsHidden(true);
+      toast.warn(
+        "You can move the tape measure anywhere, just click and drag!",
+        {
+          position: "bottom-center",
+          toastId: "tape measure hint",
+          autoClose: 10000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        }
+      );
     } else {
-      setToggleAnimation("fade-out")
+      setToggleAnimation("fade-out");
       setTimeout(() => {
-        setShouldRenderTape(false); 
+        setShouldRenderTape(false);
         setIsHidden(false);
-      },400)
+      }, 400);
     }
-  }
+  };
 
   return (
     <div>
       <Navbar />
       <h1 className="cellular-header">Cellular Shades</h1>
-      <h2 className="cellular-measurement-header">Please enter your measurements</h2>
+      <h2 className="cellular-measurement-header">
+        Please enter your measurements
+      </h2>
       <form className="cellular-form" onSubmit={handleCut}>
         <fieldset className="cellular-fieldset">
           <label className="cellular-input-one">
@@ -166,7 +191,11 @@ export default function Cellular() {
               placeholder="Example: 28 1/2"
             />
           </label>
-          <input type="submit" value="Submit" className="cellular-submit-button"/>
+          <input
+            type="submit"
+            value="Submit"
+            className="cellular-submit-button"
+          />
         </fieldset>
       </form>
       {HideResult && (
@@ -174,14 +203,20 @@ export default function Cellular() {
           <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
         </div>
       )}
-      <div className="cellular-tape-measure-button">
-        <button onClick={controlVisibility}>
+        <button
+          onClick={controlVisibility}
+          className="cellular-tape-measure-button"
+        >
           {IsHidden ? "Hide tape measure" : "Show tape measure"}
         </button>
+        <div className="draggable-container">
+          <Draggable handle=".handle" bounds="parent" defaultPosition={{ x: 10, y: 450 }}>
+            <div className={`cellular-tape-measure-container ${ToggleAnimation}`}>
+              <div className="handle">‎ </div>
+              {ShouldRenderTape && <TapeMeasure />}
+            </div>
+          </Draggable>
+        </div>
       </div>
-      <div className={`cellular-tape-measure-container ${ToggleAnimation}`}>
-        {ShouldRenderTape && <TapeMeasure />}
-      </div>
-    </div>
   );
 }

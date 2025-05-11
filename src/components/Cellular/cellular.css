@@ -83,6 +83,7 @@
     font-family: "Merriweather", serif;
     font-weight: 700;
     font-style: normal;
+    cursor: pointer;
 }
 
 .cellular-submit-button:hover {
@@ -108,6 +109,9 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
     margin-bottom: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -115,17 +119,34 @@
     font-weight: 700;
     font-style: normal;
     width: 15%;
+    background-color: #fff;
     border: solid #f9630d 3px;
     border-radius: 1rem;
     box-shadow: 0 0 5px 5px #D3D3D3;
     cursor: pointer;
+    transition: background-color 0.5s ease, transform 0.5s ease;
+    z-index: 1100;
+}
+
+.cellular-tape-measure-button:hover {
+    background-color: #f9630d;
+    transform: scale(1.05);    
 }
 
 .cellular-tape-measure-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 8rem;
+  left: 2rem;
+  z-index: 1200;
+  background-color: white;
+  border: 2px solid #f9630d;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 20%;
+  padding: 0.5rem;
+  pointer-events: auto;
 }
 
 @keyframes fadeOut {
@@ -139,6 +160,7 @@
 
 .fade-out {
     animation: fadeOut 0.4s ease-in-out forwards;
+    display: none !important;
 }
 
 @keyframes fadeIn {
@@ -152,4 +174,23 @@
 
 .fade-in {
     animation: fadeIn 0.4s ease-in-out forwards;
+}
+
+.draggable-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+.handle {
+  position: absolute;
+  top: 0.5rem;
+  background-color: #a9a9a9;
+  border-radius: 1rem;
+  width: 20%;
+  height: 10px;
+  cursor: grab;
 }

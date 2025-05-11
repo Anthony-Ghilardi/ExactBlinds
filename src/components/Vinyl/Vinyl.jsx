@@ -4,6 +4,7 @@ import { Bounce } from "react-toastify";
 import "./vinyl.css";
 import TapeMeasure from "../../TapeMeasure/TapeMeasure";
 import Navbar from "../Navbar/Navbar";
+import Draggable from "react-draggable";
 
 export default function Vinyl() {
   const [OriginalValue, setOriginalValue] = useState("");
@@ -11,7 +12,7 @@ export default function Vinyl() {
   const [Cut, setCut] = useState("");
   const [IsHidden, setIsHidden] = useState(false);
   const [ToggleAnimation, setToggleAnimation] = useState("fade-out");
-  const [ShouldRenderTape, setShouldRenderTape] = useState(false)
+  const [ShouldRenderTape, setShouldRenderTape] = useState(false);
   const [HideResult, setHideResult] = useState(false);
 
   const handleOriginalInput = (event) => {
@@ -53,6 +54,7 @@ export default function Vinyl() {
     if (OriginalValue === "" || DesiredValue === "") {
       toast.warn("Please enter blind measurements", {
         position: "bottom-center",
+        toastId: "vinyl invalid",
         autoClose: 10000,
         hideProgressBar: false,
         closeOnClick: false,
@@ -76,6 +78,7 @@ export default function Vinyl() {
         "This measurement is negative or zero please enter a different size.",
         {
           position: "bottom-center",
+          toastId: "vinyl invalid",
           autoClose: 10000,
           hideProgressBar: false,
           closeOnClick: false,
@@ -96,6 +99,7 @@ export default function Vinyl() {
         "This cut may be too short consider using a larger blind to achieve the desired size",
         {
           position: "bottom-center",
+          toastId: "vinyl invalid",
           autoClose: 10000,
           hideProgressBar: false,
           closeOnClick: false,
@@ -113,6 +117,7 @@ export default function Vinyl() {
         "This cut may be too large consider using a larger blind to achieve the desired size",
         {
           position: "bottom-center",
+          toastId: "vinyl invalid",
           autoClose: 10000,
           hideProgressBar: false,
           closeOnClick: false,
@@ -129,24 +134,41 @@ export default function Vinyl() {
   };
 
   const controlVisibility = () => {
-    if(!IsHidden) {
+    if (!IsHidden) {
       setShouldRenderTape(true);
       setToggleAnimation("fade-in");
       setIsHidden(true);
+      toast.warn(
+        "You can move the tape measure anywhere, just click and drag!",
+        {
+          position: "bottom-center",
+          toastId: "tape measure hint",
+          autoClose: 10000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        }
+      );
     } else {
-      setToggleAnimation("fade-out")
+      setToggleAnimation("fade-out");
       setTimeout(() => {
-        setShouldRenderTape(false); 
+        setShouldRenderTape(false);
         setIsHidden(false);
-      },400)
+      }, 400);
     }
-  }
+  };
 
   return (
     <div>
       <Navbar />
       <h1 className="vinyl-header">Vinyl Blinds</h1>
-      <h2 className="vinyl-measurement-header">Please enter your measurements</h2>
+      <h2 className="vinyl-measurement-header">
+        Please enter your measurements
+      </h2>
       <form className="vinyl-form" onSubmit={handleCut}>
         <fieldset className="vinyl-fieldset">
           <label className="vinyl-input-one">
@@ -177,13 +199,16 @@ export default function Vinyl() {
           <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
         </div>
       )}
-      <div className="vinyl-tape-measure-button">
-        <button onClick={controlVisibility}>
-          {IsHidden ? "Hide tape measure" : "Show tape measure"}
-        </button>
-      </div>
-      <div className={`vinyl-tape-measure-container ${ToggleAnimation}`}>
-        {ShouldRenderTape && <TapeMeasure />}
+      <button onClick={controlVisibility} className="vinyl-tape-measure-button">
+        {IsHidden ? "Hide tape measure" : "Show tape measure"}
+      </button>
+      <div className="draggable-container">
+        <Draggable handle=".handle" bounds="parent" defaultPosition={{ x: 10, y: 450 }}>
+          <div className={`vinyl-tape-measure-container ${ToggleAnimation}`}>
+            <div className="handle">‎ </div>
+            {ShouldRenderTape && <TapeMeasure />}
+          </div>
+        </Draggable>
       </div>
     </div>
   );
