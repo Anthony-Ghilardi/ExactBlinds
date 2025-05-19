@@ -138,7 +138,7 @@ export default function FauxWood() {
       setShouldRenderTape(true);
       setToggleAnimation("fade-in");
       setIsHidden(true);
-      toast.warn(
+      toast.info(
         "You can move the tape measure anywhere, just click and drag!",
         {
           position: "bottom-center",

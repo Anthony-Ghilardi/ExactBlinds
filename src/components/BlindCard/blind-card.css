@@ -20,6 +20,22 @@
     font-style: normal;
 }
 
+.card-name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 15px;
+    gap: 15px;
+}
+
+.dropdown-card-select,
+.card-name-input {
+    width: 30%;
+    border: solid black 2px;
+    border-radius: 6px;
+}
+
 .card-width-container {
     display: flex;
     justify-content: center;
@@ -29,31 +45,48 @@
 }
 
 .card-width-input {
-    width: 25%;
+    width: 10%;
+    border: solid black 2px;
+    border-radius: 6px;
 }
 
-.card-height-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+.blind-image-container {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .card-height-input {
-    width: 10%;
+  position: absolute;
+  top: 50%;
+  left: -60px;
+  transform: translateY(-50%);
+  width: 50px;
+  z-index: 2;
+  border: solid black 2px;
+  border-radius: 6px;
 }
 
 .blind-card-image {
-    padding-right: 30px;
+    max-height: 300px;
+    display: block;
 }
 
-.card-remove-btn-container {
+.card-btn-container {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
     margin: 0 auto;
     padding-bottom: 1rem;
+}
+
+.card-btn-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  max-width: 150px;
 }
 
 .card-remove-btn {
@@ -71,4 +104,13 @@
 
 .card-remove-btn:hover {
     background-color: #D2042D;
+}
+
+.submit-blind-card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-bottom: 1rem;
 }
