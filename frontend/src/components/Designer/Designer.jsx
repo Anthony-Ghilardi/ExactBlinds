@@ -1,14 +1,16 @@
 import { v4 as uuidv4 } from "uuid";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { toast } from "react-toastify";
 import { Bounce } from "react-toastify";
 import Navbar from "../Navbar/Navbar";
 import BlindCard from "../BlindCard/BlindCard";
 import "./designer.css";
+import { AuthContext } from "../../AuthProvider";
 
 export default function Designer() {
   const [blindArray, setBlindArray] = useState([]);
   const [savedBlinds, setSavedBlinds] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     console.log("Updated blindArray:", blindArray);
@@ -25,6 +27,7 @@ export default function Designer() {
       mountType: "",
       width: "",
       height: "",
+      user_uid: user.uid
     };
     console.log("Created card with ID:", newCard.id);
     console.log("Created card with name:", newCard.name);
@@ -49,7 +52,7 @@ export default function Designer() {
     setBlindArray(updateArray);
   }
 
-  function onSaveAll() {
+  async function onSaveAll() {
     const isValid = (card) =>
       card.name === "" ||
       card.mountType === "" ||
@@ -57,6 +60,23 @@ export default function Designer() {
       card.height === "" ||
       card.name.trim() === "" ||
       isNaN(Number(card.width)) || isNaN(Number(card.height));
+
+      async function sendData() {
+        const url = "http://localhost:8000/api/blinds/designer";
+        try {
+          for (let card of blindArray) {
+            await fetch(url, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json'},
+              body: JSON.stringify(card),
+            });
+            console.log("Sent:", card);
+          }
+        } catch (error) {
+          console.error(error.message);
+        }
+      }
+
     if (blindArray.some(isValid)) {
       toast.warn("Please enter all measurements", {
         toastId: "fauxwood invalid",
@@ -84,6 +104,7 @@ export default function Designer() {
         transition: Bounce,
       });
       setSavedBlinds(blindArray);
+      await sendData();
     }
   }
 
