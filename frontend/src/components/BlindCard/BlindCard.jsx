@@ -1,9 +1,20 @@
 import React from "react";
 import "./blind-card.css";
 import BlindCardWindow from "../../images/BlindCardWindow.jpg";
+import { toast } from "react-toastify";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
-export default function BlindCard({ id, name, mountType, width, height, updateCard, removeCard }) {
-
+export default function BlindCard({
+  id,
+  name,
+  mountType,
+  width,
+  height,
+  updateCard,
+  removeCard,
+  onFieldUpdate,
+}) {
   const handleWidthInputChange = (e) => {
     const width = e.target.value;
     const regex = /^\s*(\d+)?(\s+(\d+\/?\d*)?)?$/;
@@ -32,8 +43,36 @@ export default function BlindCard({ id, name, mountType, width, height, updateCa
     updateCard(id, { mountType });
   };
 
+  const isCardValid =
+    name.trim() !== "" &&
+    mountType !== "" &&
+    width.trim() !== "" &&
+    height.trim() !== "" &&
+    !isNaN(Number(width)) &&
+    !isNaN(Number(height));
+
   const handleBlindSubmit = (e) => {
     e.preventDefault();
+    if (
+      name.trim() === "" ||
+      mountType === "" ||
+      width.trim() === "" ||
+      height.trim() === "" ||
+      isNaN(Number(width)) ||
+      isNaN(Number(height))
+    ) {
+      toast.warn("Please fill all fields", {
+        position: "bottom-center",
+        autoClose: 3000,
+      });
+      return;
+    } else {
+      onFieldUpdate(id, { name, mountType, width, height });
+      toast.success("Measurements saved", {
+        position: "bottom-center",
+        autoClose: 3000,
+      });
+    }
   };
 
   return (
@@ -48,7 +87,11 @@ export default function BlindCard({ id, name, mountType, width, height, updateCa
             onChange={handleNameInput}
             placeholder="Name you blind"
           />
-          <select className="dropdown-card-select" value={mountType} onChange={handleDropdownInput}>
+          <select
+            className="dropdown-card-select"
+            value={mountType}
+            onChange={handleDropdownInput}
+          >
             <option value="">-- Select Mount Type --</option>
             <option value="inside">Inside Mount</option>
             <option value="outside">Outside Mount</option>
@@ -79,6 +122,17 @@ export default function BlindCard({ id, name, mountType, width, height, updateCa
           />
         </div>
         <div className="card-btn-container">
+          <Tippy content={<span>Saves only this blind's measurements — don't forget to finalize your full design.</span>} delay={200}>
+            <div>
+              <button
+                className="card-save-btn"
+                type="submit"
+                disabled={!isCardValid}
+              >
+                Save Card
+              </button>
+            </div>
+          </Tippy>
           <button
             className="card-remove-btn"
             onClick={() => removeCard(id)}

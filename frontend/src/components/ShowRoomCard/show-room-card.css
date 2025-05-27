@@ -1,0 +1,72 @@
+.showroom-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 30%;
+  margin: 1rem;
+  padding: 0.5rem;
+  border: solid #f9630d;
+  border-radius: 1rem;
+}
+
+.showroom-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 2rem;
+  font-family: "Ultra", serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.showroom-card-view-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  width: 20%;
+  background-color: #fff;
+  border: solid;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.5s ease, transform 0.5s ease;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.showroom-card-view-btn:hover {
+  background-color: #f9630d;
+  transform: scale(1.05);
+}
+
+.showroom-card-delete-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  width: 20%;
+  background-color: #fff;
+  border: solid #d2042d;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.5s ease, transform 0.5s ease;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.showroom-card-delete-btn:hover {
+  background-color: #d2042d;
+}

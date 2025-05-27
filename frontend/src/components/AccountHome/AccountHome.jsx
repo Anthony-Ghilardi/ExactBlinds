@@ -26,6 +26,10 @@ export default function AccountHome() {
     });
   }
 
+  function showroomNavigate() {
+    navigate("/showroom");
+  }
+
   return loading ? (
     <div className="loader-wrapper">
       <span className="loader"></span>
@@ -36,9 +40,7 @@ export default function AccountHome() {
       <div className="user-info-container">
         <h1 className="user-info-header">Account Information</h1>
         <h2 className="user-info-text">Email: {user.email}</h2>
-        <h3 className="user-info-text">
-          Designs Update to link to saved designs later
-        </h3>
+        <button className="user-info-btn" onClick={showroomNavigate}>Show Room</button>
         <button className="user-info-btn">Change Email</button>
         <button className="user-info-btn">Change password</button>
         <button onClick={handleLogout} className="user-info-btn">

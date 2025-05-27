@@ -6,19 +6,41 @@ import Navbar from "../Navbar/Navbar";
 import BlindCard from "../BlindCard/BlindCard";
 import "./designer.css";
 import { AuthContext } from "../../AuthProvider";
+import { useDesignContext } from "../../DesignContext/DesignContext";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 export default function Designer() {
   const [blindArray, setBlindArray] = useState([]);
   const [savedBlinds, setSavedBlinds] = useState([]);
+  const [designName, setDesignName] = useState("");
   const { user } = useContext(AuthContext);
+  const { designs } = useDesignContext();
+
+  useEffect(() => {}, [blindArray]);
+
+  useEffect(() => {}, [savedBlinds]);
 
   useEffect(() => {
-    console.log("Updated blindArray:", blindArray);
-  }, [blindArray]);
+    if (designs.length > 0) {
+      const formatted = designs.map((card) => {
+        return {
+          id: card.id,
+          name: card.name,
+          width: card.width,
+          height: card.height,
+          mountType: card.mount_type,
+          user_uid: card.user_uid,
+          design_project_id: card.design_project_id,
+        };
+      });
+      setBlindArray(formatted);
+    }
+  }, [designs]);
 
-  useEffect(() => {
-    console.log("Final saved design:", savedBlinds);
-  }, [savedBlinds]);
+  const handleNameInput = (e) => {
+    setDesignName(e.target.value);
+  };
 
   function createCard() {
     const newCard = {
@@ -27,13 +49,8 @@ export default function Designer() {
       mountType: "",
       width: "",
       height: "",
-      user_uid: user.uid
+      user_uid: user.uid,
     };
-    console.log("Created card with ID:", newCard.id);
-    console.log("Created card with name:", newCard.name);
-    console.log("Created card with mount type:", newCard.mountType);
-    console.log("Created card with width:", newCard.width);
-    console.log("Created card with height:", newCard.height);
     setBlindArray([...blindArray, newCard]);
   }
 
@@ -42,14 +59,37 @@ export default function Designer() {
   }
 
   function updateCard(id, updatedFields) {
-    const updateArray = blindArray.map((card) => {
-      if (card.id === id) {
-        return { ...card, ...updatedFields };
-      } else {
-        return card;
-      }
-    });
+    const updateArray = blindArray.map((card) =>
+      card.id === id ? { ...card, ...updatedFields } : card
+    );
     setBlindArray(updateArray);
+  }
+
+  async function onFieldUpdate(id, updatedFields) {
+    const current = blindArray.find((card) => card.id === id);
+    if (!current) return;
+
+    const updatedBlind = { ...current, ...updatedFields };
+
+    updateCard(id, updatedFields);
+
+    try {
+      const res = await fetch("http://localhost:8000/api/blinds/updateDesign", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedBlind),
+      });
+
+      if (!res.ok) throw new Error("Failed to update design");
+
+      console.log("Updated design:", updatedBlind);
+    } catch (error) {
+      console.error("Update failed:", error.message);
+      toast.error("Failed to save changes", {
+        position: "bottom-center",
+        autoClose: 3000,
+      });
+    }
   }
 
   async function onSaveAll() {
@@ -59,27 +99,28 @@ export default function Designer() {
       card.width === "" ||
       card.height === "" ||
       card.name.trim() === "" ||
-      isNaN(Number(card.width)) || isNaN(Number(card.height));
+      isNaN(Number(card.width)) ||
+      isNaN(Number(card.height));
 
-      async function sendData() {
-        const url = "http://localhost:8000/api/blinds/designer";
-        try {
-          for (let card of blindArray) {
-            await fetch(url, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json'},
-              body: JSON.stringify(card),
-            });
-            console.log("Sent:", card);
-          }
-        } catch (error) {
-          console.error(error.message);
-        }
-      }
+    if (!designName.trim()) {
+      toast.warn("Please enter a design name", {
+        toastId: "design-name-missing",
+        position: "bottom-center",
+        autoClose: 8000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+      return;
+    }
 
     if (blindArray.some(isValid)) {
       toast.warn("Please enter all measurements", {
-        toastId: "fauxwood invalid",
+        toastId: "fauxwood-invalid",
         position: "bottom-center",
         autoClose: 10000,
         hideProgressBar: false,
@@ -91,7 +132,28 @@ export default function Designer() {
         transition: Bounce,
       });
       return;
-    } else {
+    }
+
+    const projectRes = await fetch(
+      "http://localhost:8000/api/blinds/projects",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: designName, user_uid: user.uid }),
+      }
+    );
+
+    const { id: design_project_id } = await projectRes.json();
+
+    try {
+      for (let card of blindArray) {
+        await fetch("http://localhost:8000/api/blinds/designer", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...card, design_project_id }),
+        });
+        console.log("Sent:", card);
+      }
       toast.success("All measurements saved!", {
         position: "bottom-center",
         autoClose: 5000,
@@ -104,7 +166,8 @@ export default function Designer() {
         transition: Bounce,
       });
       setSavedBlinds(blindArray);
-      await sendData();
+    } catch (error) {
+      console.error(error.message);
     }
   }
 
@@ -112,14 +175,27 @@ export default function Designer() {
     <div>
       <Navbar />
       <div className="save-btn-container">
-        <button
-          className="save-all-btn"
-          onClick={onSaveAll}
-          disabled={blindArray.length === 0}
-          type="button"
-        >
-          Save Design
-        </button>
+        <Tippy content={<span>Saves your entire design project to your account.</span>} delay={200}>
+          <div>
+            <button
+              className="save-all-btn"
+              onClick={onSaveAll}
+              disabled={blindArray.length === 0 || !designName.trim()}
+              type="button"
+            >
+              Finalize Design
+            </button>
+          </div>
+        </Tippy>
+        <div className="design-name-container">
+          <input
+            className="design-name-input"
+            type="text"
+            value={designName}
+            onChange={handleNameInput}
+            placeholder="Name your design"
+          />
+        </div>
       </div>
       <div className="card-container">
         {blindArray.map((blindArray) => (
@@ -132,6 +208,7 @@ export default function Designer() {
             height={blindArray.height}
             removeCard={removeCard}
             updateCard={updateCard}
+            onFieldUpdate={onFieldUpdate}
           />
         ))}
       </div>
