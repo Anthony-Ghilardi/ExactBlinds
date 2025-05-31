@@ -41,8 +41,6 @@ export default function AccountHome() {
         <h1 className="user-info-header">Account Information</h1>
         <h2 className="user-info-text">Email: {user.email}</h2>
         <button className="user-info-btn" onClick={showroomNavigate}>Show Room</button>
-        <button className="user-info-btn">Change Email</button>
-        <button className="user-info-btn">Change password</button>
         <button onClick={handleLogout} className="user-info-btn">
           Log Out
         </button>

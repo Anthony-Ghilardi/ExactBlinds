@@ -113,3 +113,11 @@ button {
     height: 350px;
     object-fit: cover;
 }
+
+@media only screen and (max-width: 1543px) {
+    .blind-container-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

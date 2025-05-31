@@ -4,18 +4,21 @@ import { toast } from "react-toastify";
 import { Bounce } from "react-toastify";
 import Navbar from "../Navbar/Navbar";
 import BlindCard from "../BlindCard/BlindCard";
+import DesignerBlock from "../DesignerBlock/DesignerBlock";
 import "./designer.css";
 import { AuthContext } from "../../AuthProvider";
 import { useDesignContext } from "../../DesignContext/DesignContext";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Designer() {
   const [blindArray, setBlindArray] = useState([]);
   const [savedBlinds, setSavedBlinds] = useState([]);
   const [designName, setDesignName] = useState("");
-  const { user } = useContext(AuthContext);
+  const { token,user } = useContext(AuthContext);
   const { designs } = useDesignContext();
+  const navigate = useNavigate();
 
   useEffect(() => {}, [blindArray]);
 
@@ -37,6 +40,8 @@ export default function Designer() {
       setBlindArray(formatted);
     }
   }, [designs]);
+
+  if(!user) return <DesignerBlock />
 
   const handleNameInput = (e) => {
     setDesignName(e.target.value);
@@ -76,13 +81,15 @@ export default function Designer() {
     try {
       const res = await fetch("http://localhost:8000/api/blinds/updateDesign", {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
         body: JSON.stringify(updatedBlind),
       });
 
       if (!res.ok) throw new Error("Failed to update design");
 
-      console.log("Updated design:", updatedBlind);
     } catch (error) {
       console.error("Update failed:", error.message);
       toast.error("Failed to save changes", {
@@ -138,7 +145,10 @@ export default function Designer() {
       "http://localhost:8000/api/blinds/projects",
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
         body: JSON.stringify({ name: designName, user_uid: user.uid }),
       }
     );
@@ -149,10 +159,12 @@ export default function Designer() {
       for (let card of blindArray) {
         await fetch("http://localhost:8000/api/blinds/designer", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { 
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
           body: JSON.stringify({ ...card, design_project_id }),
         });
-        console.log("Sent:", card);
       }
       toast.success("All measurements saved!", {
         position: "bottom-center",
@@ -171,9 +183,16 @@ export default function Designer() {
     }
   }
 
+  function backButton() {
+    navigate("/showroom")
+  }
+
   return (
     <div>
       <Navbar />
+      <div>
+        <button className="designer-back-btn" onClick={backButton}>Back to showroom</button>
+      </div>
       <div className="save-btn-container">
         <Tippy content={<span>Saves your entire design project to your account.</span>} delay={200}>
           <div>

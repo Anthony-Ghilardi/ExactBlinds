@@ -12,6 +12,7 @@
 /build
 
 # misc
+exact-blinds-firebase-adminsdk-fbsvc-021c4f6513.json
 .env
 .DS_Store
 .env.local

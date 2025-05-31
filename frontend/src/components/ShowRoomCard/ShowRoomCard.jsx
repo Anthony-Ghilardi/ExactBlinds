@@ -2,6 +2,7 @@ import React from "react";
 import './show-room-card.css'
 
 export default function ShowRoomCard({ id, name, onView, onDelete }) {
+
     return (
         <div className="showroom-card-container">
             <h1 className="showroom-card-header">{name}</h1>

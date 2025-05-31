@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const blindsRoutes = require('./routes/blinds');
+const { intializeApp } = require('firebase-admin/app');
 require('dotenv').config();
 
 

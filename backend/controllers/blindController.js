@@ -63,8 +63,6 @@ async function displayBlindDesign(req, res) {
       "SELECT * FROM blind_designs WHERE design_project_id = $1",
       [design_project_id]
     );
-    console.log("Received body:", req.body);
-    console.log("Looking up blinds for project ID:", design_project_id);
     res.status(200).json(result.rows);
   } catch (error) {
     console.error(error);

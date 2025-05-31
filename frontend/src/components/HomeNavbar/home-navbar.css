@@ -48,3 +48,9 @@
 .home-navbar-link:hover {
   color: #D3D3D3;
 }
+
+@media (max-width: 767px) {
+  .home-navbar-links {
+    display: none;
+  }
+}
