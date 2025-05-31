@@ -18,7 +18,7 @@ export default function ShowRoom() {
   useEffect(() => {
     if (!token || !user?.uid) return;
 
-    fetch(`http://localhost:8000/api/blinds/showroom?uid=${user?.uid}`, {
+    fetch(`${process.env.REACT_APP_API_BASE}/api/blinds/showroom?uid=${user?.uid}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -44,7 +44,7 @@ export default function ShowRoom() {
 
   async function sendUserDesign(id) {
     const projectRes = await fetch(
-      "http://localhost:8000/api/blinds/loadProject",
+      `${process.env.REACT_APP_API_BASE}/api/blinds/loadProject`,
       {
         method: "POST",
         headers: {
@@ -60,7 +60,7 @@ export default function ShowRoom() {
   }
 
   async function deleteDesign(id) {
-    await fetch("http://localhost:8000/api/blinds/deleteDesign", {
+    await fetch(`${process.env.REACT_APP_API_BASE}/api/blinds/deleteDesign`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export default function ShowRoom() {
       },
       body: JSON.stringify({ id: id }),
     });
-    fetch(`http://localhost:8000/api/blinds/showroom?uid=${user?.uid}`, {
+    fetch(`${process.env.REACT_APP_API_BASE}/api/blinds/showroom?uid=${user?.uid}`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${token}`,
