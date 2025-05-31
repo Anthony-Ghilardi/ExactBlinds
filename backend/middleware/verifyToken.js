@@ -1,5 +1,5 @@
 const admin = require("firebase-admin");
-const serviceAccount = require("../exact-blinds-firebase-adminsdk-fbsvc-021c4f6513.json");
+const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG_JSON);
 
 if (!admin.apps.length) {
   admin.initializeApp({
