@@ -6,6 +6,7 @@ import { auth } from "../../firebase/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider";
+const API_BASE = process.env.REACT_APP_API_BASE;
 
 export default function SignupForm() {
   const [createEmail, setCreateEmail] = useState("");

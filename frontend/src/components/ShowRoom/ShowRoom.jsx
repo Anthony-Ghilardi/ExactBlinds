@@ -6,6 +6,7 @@ import HomeNavbar from "../HomeNavbar/HomeNavbar";
 import { useNavigate } from "react-router-dom";
 import ShowRoomCard from "../ShowRoomCard/ShowRoomCard";
 import DeleteModal from "../DeleteModal/DeleteModal";
+const API_BASE = process.env.REACT_APP_API_BASE;
 
 export default function ShowRoom() {
   const { token, user, loading } = useContext(AuthContext);

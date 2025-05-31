@@ -11,6 +11,7 @@ import { useDesignContext } from "../../DesignContext/DesignContext";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { useNavigate } from "react-router-dom";
+const API_BASE = process.env.REACT_APP_API_BASE;
 
 export default function Designer() {
   const [blindArray, setBlindArray] = useState([]);
