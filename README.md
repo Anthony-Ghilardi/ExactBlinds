@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# Exact Blinds - Save, Edit, and Estimate Your Blind Measurements Today
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Exact Blinds provides powerful tools for accurately measuring, saving, and customizing blinds for your home. With built-in blind-cutting utilities, users can calculate how much material needs to be trimmed for a perfect fit. The designer tool includes access to a virtual showroom, where users can save and manage window measurements across multiple designs—whether for different rooms or entirely separate homes. 
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Overview](#exact-blinds---save-edit-and-estimate-your-blind-measurements-today)
+- [Deployed Website](#deployed-website)
+- [Getting Started](#getting-started)
+- [Technologies](#technologies)
+- [Upcoming Features](#upcoming-features)
+- [Author](#solo-project-created-by)
 
-### `npm start`
+## Deployed Website
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Frontend
+  - https://exactblindsfrontend-production.up.railway.app/
+  - Hosted on: [Railway](https://railway.com/)
+- Backend
+  - Node.js
+  - Hosted on: [Railway](https://railway.com/)
+- Database
+  - PostgreSQL
+  - Hosted on: [Railway](https://railway.com/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Getting Started
 
-### `npm test`
+Prerequisites
+- Node.js
+- npm
+- PostgreSQL
+- Firebase project setup for authentication
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Installation
+1. Clone the repository.
+  - git clone https://github.com/Anthony-Ghilardi/exact-blinds.git
+2. Navigate into project directories and install dependencies.
+  - cd frontend
+    - npm install
+  - cd backend
+    - npm install
+3. Set up .env files for frontend and backend.
+  - Frontend .env
+    - REACT_APP_FIREBASE_API_KEY=YOUR_FIREBASE_API_KEY
+  - Backend .env
+    - PG_HOST=YOUR_PG_HOST
+    - PG_PORT=YOUR_PG_PORT
+    - PG_DATABASE=YOUR_PG_DATABASE
+    - PG_USER=YOUR_PG_USER
+    - PG_PASSWORD=YOUR_PG_PASSWORD
+    - PORT=YOUR_PORT
+4. Start development servers.
+  - For frontend
+    - npm start
+  - For backend 
+    - npm run dev
 
-### `npm run build`
+### Technologies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Frontend:
+- [Toastify](https://www.npmjs.com/package/react-toastify)
+  - Provides user-friendly notifications for interactions and feedback.
+- [uuid](https://www.npmjs.com/package/uuid?activeTab=readme)
+  - Generates unique IDs for users and application state handling.
+- [Tippy.js/react](https://www.npmjs.com/package/@tippyjs/react)
+  - Adds accessible and customizable tooltips for enhanced UX.
+- [Firebase Auth](https://firebase.google.com/docs/auth)
+  - Handles user signup, login, and authentication. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Backend:
+- [Node.js express](https://expressjs.com/)
+  - Serves HTTP requests and routes
+- [node-postgres](https://node-postgres.com/)
+  - Handles communication with PostgreSQL database
+- [nodemon](https://www.npmjs.com/package/nodemon)
+  - Automatically restarts server during development.
+- [firebase-admin](https://firebase.google.com/docs/admin/setup)
+  - Handles user token authentication.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Upcoming features
 
-### `npm run eject`
+- Mobile responsive layouts.
+- Editing, updating, deleting account information.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Author 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Anthony Ghilardi
+  - [Github:](https://github.com/Anthony-Ghilardi)
+  - [LinkedIn:](https://www.linkedin.com/in/anthony-ghilardi/)
