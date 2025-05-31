@@ -22,7 +22,6 @@ export default function LoginSplashPage() {
     signInWithEmailAndPassword(auth, loggedInEmail, loggedInPassword)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
         toast.success("Logged in successfully", {
           position: "bottom-center",
           autoClose: 5000,
@@ -39,7 +38,7 @@ export default function LoginSplashPage() {
           navigate("/account");
       })
       .catch((error) => {
-        toast.error("Unable to create account", {
+        toast.error("Login failed. Please check your credentials.", {
           position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -52,8 +51,6 @@ export default function LoginSplashPage() {
         });
         isLoggingInRef.current = false;
         setIsLoggingIn(false);
-        const errorCode = error.code;
-        const errorMessage = error.message;
       });
   }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SignupForm from "../SignupForm/SignupForm";
 import "./signup-page.css"
 import Navbar from "../Navbar/Navbar";
