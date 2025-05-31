@@ -79,7 +79,7 @@ export default function Designer() {
     updateCard(id, updatedFields);
 
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_BASE}/api/blinds/updateDesign`, {
+      const res = await fetch(`${API_BASE}/api/blinds/updateDesign`, {
         method: "PUT",
         headers: { 
           "Content-Type": "application/json",
@@ -142,7 +142,7 @@ export default function Designer() {
     }
 
     const projectRes = await fetch(
-      `${process.env.REACT_APP_API_BASE}/api/blinds/projects`,
+      `${API_BASE}/api/blinds/projects`,
       {
         method: "POST",
         headers: { 
@@ -157,7 +157,7 @@ export default function Designer() {
 
     try {
       for (let card of blindArray) {
-        await fetch(`${process.env.REACT_APP_API_BASE}/api/blinds/designer`, {
+        await fetch(`${API_BASE}/api/blinds/designer`, {
           method: "POST",
           headers: { 
           "Content-Type": "application/json",

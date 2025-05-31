@@ -29,7 +29,7 @@ export default function SignupForm() {
       );
       const { uid, email } = userCredential.user;
 
-      const response = await fetch(`${process.env.REACT_APP_API_BASE}/api/blinds/signup`, {
+      const response = await fetch(`${API_BASE}/api/blinds/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ uid, email }),
