@@ -1,0 +1,40 @@
+[33m82c8e3c[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m README updates
+[33ma14b242[m Production changes
+[33m430066f[m Production changes
+[33m4c2897d[m Production changes
+[33m06c1c61[m Production changes
+[33m0c7abd1[m Production changes
+[33me676928[m Remove eslint warnings and babel issues
+[33m2c68678[m[33m ([m[1;32mstyling-changes[m[33m)[m Version 1 production prep
+[33m6990280[m[33m ([m[1;32mdatabase-creation[m[33m)[m Completed datbase connections and showroom layout
+[33mc908fec[m[33m ([m[1;31morigin/database-creation[m[33m)[m Added user saved designs and database setup
+[33m61ecce3[m[33m ([m[1;31morigin/ui-changes[m[33m, [m[1;32mui-changes[m[33m)[m Ability to locally save blind measurements
+[33md41e1fa[m Added popup tape measure modal to multiple pages
+[33m8fd78fb[m[33m ([m[1;32mfirebase-auth[m[33m)[m Finished firebase auth integration and imporved ui flow
+[33m8506eba[m[33m ([m[1;31morigin/firebase-auth[m[33m)[m Remove .env file from Git tracking
+[33m04c1817[m Merge branch 'firebase-auth' of https://github.com/Anthony-Ghilardi/ExactBlinds into firebase-auth
+[33mde496b1[m Remove .env file from Git tracking
+[33m363b4d2[m Added ui changes and firebase
+[33m6d3fe2c[m Added ui changes and firebase
+[33m7557ae4[m Added create and delete functionality to design page
+[33mb1970d5[m Added blind card component and styling changes
+[33m7e9fe9e[m Refactored navbar structure/styling added designer page
+[33m38de899[m Button animations and stlying changes
+[33m612787c[m Resolved page bouncing on navigation & font changes
+[33m18b55c7[m Stlying changes across multiple pages
+[33m82812ed[m Styling and font changes across multiple pages
+[33mb06f7ea[m Small styling changes made to home navbar
+[33m59f8f69[m Styling changes for how to page
+[33m95dfe10[m Added how to page structure and starting info
+[33m195d0b9[m Added new routes and navlinks
+[33mfe53a98[m Styling and layout changes
+[33m93f5874[m Added logic to cellular and vinyl blind pages
+[33m7d2736d[m Added toast warnings
+[33mbc3f129[m Styling and layout changes
+[33m8fd7652[m Added stlying and navigation bar
+[33m4ae4d10[m Added styling and fonts to faux wood page
+[33md64b96d[m Added logic for blind cuts and buttons
+[33mec70416[m Adding logic for faux wood blind cuts
+[33m9df59bb[m Strucutre and psuedo logic
+[33m21bcc4e[m Basic site structure and navigate routes
+[33m818c191[m Initialize project using Create React App
