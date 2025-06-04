@@ -49,7 +49,7 @@ export default function Tutorial() {
           </p>
         </article>
 
-        <div>
+        <div className="inside-mount-img-container">
           <img
             className="inside-mount-image"
             src={InsideMountHelper}

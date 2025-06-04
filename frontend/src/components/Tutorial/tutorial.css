@@ -99,6 +99,33 @@
   line-height: 1.5;
 }
 
+@media (max-width: 1024px) {
+  .tutorial-body-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .inside-mount-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 80%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .outside-mount-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 80%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
 @media (max-width: 900px) {
   .tutorial-body-container {
     display: flex;
