@@ -15,4 +15,5 @@ app.use('/api/blinds', blindsRoutes);
 app.listen(process.env.PORT, function (err) {
     if (err) console.log(err);
     console.log("Server is running on PORT", process.env.PORT);
+    console.log("process.env.NODE_ENV:", process.env.NODE_ENV)
 });
