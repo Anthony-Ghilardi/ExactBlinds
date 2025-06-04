@@ -5,6 +5,7 @@
   background-color: #f9630d;
   padding: 1rem 3rem;
   font-family: "Ultra", serif;
+  max-width: 100vw;
 }
 
 /* Logo */
@@ -49,7 +50,7 @@
   color: #D3D3D3;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .home-navbar-links {
     display: none;
   }
