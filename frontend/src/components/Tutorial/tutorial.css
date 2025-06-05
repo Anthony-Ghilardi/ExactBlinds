@@ -139,3 +139,35 @@
     height: auto;
   }
 }
+
+@media (max-width: 768px) {
+  .tutorial-body-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .intro-article h1 {
+    font-size: 2rem;
+  }
+
+  .intro-article p {
+    font-size: 1rem
+  }
+
+  .inside-mount-article h2 {
+    font-size: 2rem;
+  }
+
+  .inside-mount-article p {
+    font-size: 1rem;
+  }
+
+  .outside-mount-article h2 {
+    font-size: 2rem;
+  }
+
+  .outside-mount-article p {
+    font-size: 1rem;
+  }
+}

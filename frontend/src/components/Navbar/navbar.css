@@ -10,32 +10,28 @@
 }
 
 .navbar-left .navbar-logo {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #fff;
   text-decoration: none;
 }
 
-.navbar-center .navbar-links {
-  list-style-type: none;
+.navbar-links {
   display: flex;
-  margin: 0;
-  padding: 0;
+  align-items: center;
+  justify-content: center;
 }
 
-.navbar-center .navbar-links li {
-  padding: 2rem;
-  margin-right: 1rem;
-}
-
-.navbar-center .navbar-links a {
+.navbar-link-text {
+  font-size: 2rem;
   color: #fff;
-  font-size: 1.5rem;
   text-decoration: none;
+  padding-left: 4rem;
+  padding-right: 4rem;
   transition: all 0.3s ease;
 }
 
-.navbar-center .navbar-links a:hover {
+.navbar-link-text:hover {
   color: #D3D3D3;
 }
 
@@ -54,11 +50,42 @@
   color: #fff;
   border-radius: 50%;
   padding: 0.2rem 0.5rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .navbar-right .login-link:hover {
   color: #D3D3D3;
+}
+
+@media (max-width: 1024px) {
+  .navbar-container {
+    max-width: 100vw;
+  }
+
+  .navbar-left {
+    padding: 0rem;
+  }
+
+  .navbar-center {
+    padding: 0rem;
+  }
+
+  .navbar-links {
+    padding: 0rem;
+  }
+
+  .navbar-link-text {
+    padding: 2rem;
+    font-size: 1.5rem;
+  }
+
+   .navbar-right .login-link {
+    font-size: 1.5rem;
+  }
+
+  .navbar-right .home-navbar-link {
+    font-size: 1.5rem;
+  }
 }

@@ -20,24 +20,20 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="navbar-center">
-        <ul className="navbar-links">
-          <li>
-            <Link to="/fauxWood">Faux Wood</Link>
-          </li>
-          <li>
-            <Link to="/cellular">Cellular Shades</Link>
-          </li>
-          <li>
-            <Link to="/vinyl">Vinyl</Link>
-          </li>
-        </ul>
+        <div className="navbar-links">
+          <Link to="/fauxWood" className="navbar-link-text">Faux Wood</Link>
+          <Link to="/cellular" className="navbar-link-text">Cellular Shades</Link>
+          <Link to="/vinyl" className="navbar-link-text">Vinyl</Link>
+        </div>
       </div>
       <div className="navbar-right">
-        {!user && location.pathname !== "/login" &&  location.pathname !== "/signup" && (
-          <Link to="/login" className="login-link">
-            Login
-          </Link>
-        )}
+        {!user &&
+          location.pathname !== "/login" &&
+          location.pathname !== "/signup" && (
+            <Link to="/login" className="login-link">
+              Login
+            </Link>
+          )}
         {user && location.pathname !== "/account" && user && (
           <Link to="/account" className="home-navbar-link">
             Account
