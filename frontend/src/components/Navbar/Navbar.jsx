@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import "./navbar.css";
 import logo from "../../images/ExactBlindsLogoTransparent.jpg";
 import { AuthContext } from "../../AuthProvider";
+import Navburger from "../NavBurger/NavBurger";
+
 
 export default function Navbar() {
   const location = useLocation();
@@ -39,6 +41,9 @@ export default function Navbar() {
             Account
           </Link>
         )}
+      </div>
+      <div>
+        <Navburger />
       </div>
     </nav>
   );

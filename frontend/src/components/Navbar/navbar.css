@@ -89,3 +89,13 @@
     font-size: 1.5rem;
   }
 }
+
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-right {
+    display: none;
+  }
+}
