@@ -13,9 +13,12 @@ export default function DesignerBlock() {
         <p className="designer-block-text">
           The Designer page allows you to create and save multiple custom window
           measurements directly to your account, making them accessible from any
-          device at any time. You can specify key details such as mount type,
-          height, and width, and give each design a unique name to easily
-          organize and identify your projects.
+          device at any time.
+        </p>
+        <p className="designer-block-text">
+          You can specify key details such as mount type, height, and width, and
+          give each design a unique name to easily organize and identify your
+          projects.
         </p>
       </div>
     </div>
