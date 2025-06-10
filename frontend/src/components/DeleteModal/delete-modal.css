@@ -76,3 +76,9 @@
     opacity: 1;
   }
 }
+
+@media (max-width: 430px) {
+  .delete-modal-content {
+    max-width: 80vw;
+  }
+}
