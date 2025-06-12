@@ -90,8 +90,6 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  margin-top: 10px;
-  position: sticky;
   top: 40px;
   z-index: 1250;
 }
@@ -105,4 +103,37 @@
   font-family: "Merriweather", serif;
   font-weight: 700;
   font-style: normal;
+}
+
+@media (max-width: 1024px) {
+  .create-card-btn-container {
+    margin-top: 8px;
+    margin-bottom: 1px;
+  }
+
+  .save-all-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .create-card-btn-container {
+    margin-top: 8px;
+    margin-bottom: 1px;
+  }
+
+  .save-all-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 430px) {
 }

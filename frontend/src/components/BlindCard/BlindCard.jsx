@@ -14,6 +14,8 @@ export default function BlindCard({
   updateCard,
   removeCard,
   onFieldUpdate,
+  fadeIn,
+  isRemoving,
 }) {
   const handleWidthInputChange = (e) => {
     const width = e.target.value;
@@ -76,7 +78,7 @@ export default function BlindCard({
   };
 
   return (
-    <div className="blind-card-container">
+    <div className={`blind-card-container ${fadeIn ? "fade-in" : ""}`}>
       <h1 className="blind-card-header">Enter your measurements</h1>
       <form className="blind-card-form" onSubmit={handleBlindSubmit}>
         <div className="card-name-container">
@@ -122,7 +124,15 @@ export default function BlindCard({
           />
         </div>
         <div className="card-btn-container">
-          <Tippy content={<span>Saves only this blind's measurements — don't forget to finalize your full design.</span>} delay={200}>
+          <Tippy
+            content={
+              <span>
+                Saves only this blind's measurements — don't forget to finalize
+                your full design.
+              </span>
+            }
+            delay={200}
+          >
             <div>
               <button
                 className="card-save-btn"

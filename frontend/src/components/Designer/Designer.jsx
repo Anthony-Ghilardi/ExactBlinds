@@ -14,10 +14,11 @@ import { useNavigate } from "react-router-dom";
 const API_BASE = process.env.REACT_APP_API_BASE;
 
 export default function Designer() {
+  const [fadeInId, setFadeInId] = useState("");
   const [blindArray, setBlindArray] = useState([]);
   const [savedBlinds, setSavedBlinds] = useState([]);
   const [designName, setDesignName] = useState("");
-  const { token,user } = useContext(AuthContext);
+  const { token, user } = useContext(AuthContext);
   const { designs } = useDesignContext();
   const navigate = useNavigate();
 
@@ -42,7 +43,7 @@ export default function Designer() {
     }
   }, [designs]);
 
-  if(!user) return <DesignerBlock />
+  if (!user) return <DesignerBlock />;
 
   const handleNameInput = (e) => {
     setDesignName(e.target.value);
@@ -58,6 +59,8 @@ export default function Designer() {
       user_uid: user.uid,
     };
     setBlindArray([...blindArray, newCard]);
+    setFadeInId(newCard.id);
+    console.log(fadeInId)
   }
 
   function removeCard(id) {
@@ -82,15 +85,14 @@ export default function Designer() {
     try {
       const res = await fetch(`${API_BASE}/api/blinds/updateDesign`, {
         method: "PUT",
-        headers: { 
+        headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(updatedBlind),
       });
 
       if (!res.ok) throw new Error("Failed to update design");
-
     } catch (error) {
       console.error("Update failed:", error.message);
       toast.error("Failed to save changes", {
@@ -142,17 +144,14 @@ export default function Designer() {
       return;
     }
 
-    const projectRes = await fetch(
-      `${API_BASE}/api/blinds/projects`,
-      {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({ name: designName, user_uid: user.uid }),
-      }
-    );
+    const projectRes = await fetch(`${API_BASE}/api/blinds/projects`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ name: designName, user_uid: user.uid }),
+    });
 
     const { id: design_project_id } = await projectRes.json();
 
@@ -160,10 +159,10 @@ export default function Designer() {
       for (let card of blindArray) {
         await fetch(`${API_BASE}/api/blinds/designer`, {
           method: "POST",
-          headers: { 
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
           body: JSON.stringify({ ...card, design_project_id }),
         });
       }
@@ -185,28 +184,17 @@ export default function Designer() {
   }
 
   function backButton() {
-    navigate("/showroom")
+    navigate("/showroom");
   }
 
   return (
     <div>
       <Navbar />
       <div>
-        <button className="designer-back-btn" onClick={backButton}>Back to showroom</button>
+        <button className="designer-back-btn" onClick={backButton}>
+          Back to showroom
+        </button>
       </div>
-      <div className="save-btn-container">
-        <Tippy content={<span>Saves your entire design project to your account.</span>} delay={200}>
-          <div>
-            <button
-              className="save-all-btn"
-              onClick={onSaveAll}
-              disabled={blindArray.length === 0 || !designName.trim()}
-              type="button"
-            >
-              Finalize Design
-            </button>
-          </div>
-        </Tippy>
         <div className="design-name-container">
           <input
             className="design-name-input"
@@ -216,7 +204,6 @@ export default function Designer() {
             placeholder="Name your design"
           />
         </div>
-      </div>
       <div className="card-container">
         {blindArray.map((blindArray) => (
           <BlindCard
@@ -229,6 +216,7 @@ export default function Designer() {
             removeCard={removeCard}
             updateCard={updateCard}
             onFieldUpdate={onFieldUpdate}
+            fadeIn={blindArray.id === fadeInId}
           />
         ))}
       </div>
@@ -237,6 +225,21 @@ export default function Designer() {
           Add window
         </button>
       </div>
+      <Tippy
+        content={<span>Saves your entire design project to your account.</span>}
+        delay={200}
+      >
+        <div>
+          <button
+            className="save-all-btn"
+            onClick={onSaveAll}
+            disabled={blindArray.length === 0 || !designName.trim()}
+            type="button"
+          >
+            Finalize Design
+          </button>
+        </div>
+      </Tippy>
     </div>
   );
 }
