@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { toast } from "react-toastify";
 import { Bounce } from "react-toastify";
 import "./vinyl.css";
 import TapeMeasure from "../../TapeMeasure/TapeMeasure";
 import Navbar from "../Navbar/Navbar";
-import Draggable from "react-draggable";
 
 export default function Vinyl() {
   const [OriginalValue, setOriginalValue] = useState("");
@@ -14,6 +13,7 @@ export default function Vinyl() {
   const [ToggleAnimation, setToggleAnimation] = useState("fade-out");
   const [ShouldRenderTape, setShouldRenderTape] = useState(false);
   const [HideResult, setHideResult] = useState(false);
+  const constraintsRef = useRef(null);
 
   const handleOriginalInput = (event) => {
     const OriginalValue = event.target.value;
@@ -163,52 +163,60 @@ export default function Vinyl() {
   };
 
   return (
-    <div>
-      <Navbar />
-      <h1 className="vinyl-header">Vinyl Blinds</h1>
-      <h2 className="vinyl-measurement-header">
-        Please enter your measurements
-      </h2>
-      <form className="vinyl-form" onSubmit={handleCut}>
-        <fieldset className="vinyl-fieldset">
-          <label className="vinyl-input-one">
-            Enter the width of your current blind
+    <div className="vinyl-drag-container" ref={constraintsRef}>
+      <div>
+        <Navbar />
+        <h1 className="vinyl-header">Vinyl Blinds</h1>
+        <h2 className="vinyl-measurement-header">
+          Please enter your measurements
+        </h2>
+        <form className="vinyl-form" onSubmit={handleCut}>
+          <fieldset className="vinyl-fieldset">
+            <label className="vinyl-input-one">
+              Enter the width of your current blind
+              <input
+                type="text"
+                className="vinyl-text-input"
+                value={OriginalValue}
+                onChange={handleOriginalInput}
+                placeholder="Example: 30 1/2"
+              />
+            </label>
+            <label className="vinyl-input-two">
+              Enter the desired width of your blind
+              <input
+                type="text"
+                className="vinyl-text-input"
+                value={DesiredValue}
+                onChange={handleDesiredInput}
+                placeholder="Example: 28 1/2"
+              />
+            </label>
             <input
-              type="text"
-              className="vinyl-text-input"
-              value={OriginalValue}
-              onChange={handleOriginalInput}
-              placeholder="Example: 30 1/2"
+              type="submit"
+              value="Submit"
+              className="vinyl-submit-button"
             />
-          </label>
-          <label className="vinyl-input-two">
-            Enter the desired width of your blind
-            <input
-              type="text"
-              className="vinyl-text-input"
-              value={DesiredValue}
-              onChange={handleDesiredInput}
-              placeholder="Example: 28 1/2"
-            />
-          </label>
-          <input type="submit" value="Submit" className="vinyl-submit-button" />
-        </fieldset>
-      </form>
-      {HideResult && (
-        <div className="vinyl-cut-showcase">
-          <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
-        </div>
-      )}
-      <button onClick={controlVisibility} className="vinyl-tape-measure-button">
-        {IsHidden ? "Hide tape measure" : "Show tape measure"}
-      </button>
-      <div className="draggable-container">
-        <Draggable handle=".handle" bounds="parent" defaultPosition={{ x: 10, y: 450 }}>
-          <div className={`vinyl-tape-measure-container ${ToggleAnimation}`}>
-            <div className="handle">‎ </div>
-            {ShouldRenderTape && <TapeMeasure />}
+          </fieldset>
+        </form>
+        {HideResult && (
+          <div className="vinyl-cut-showcase">
+            <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
           </div>
-        </Draggable>
+        )}
+        <div className="vinyl-tape-measure-btn-container">
+          <button
+            onClick={controlVisibility}
+            className="vinyl-tape-measure-button"
+          >
+            {IsHidden ? "Hide tape measure" : "Show tape measure"}
+          </button>
+        </div>
+        <div className="draggable-container">
+          <div className={`${ToggleAnimation}`}>
+            {ShouldRenderTape && <TapeMeasure constraintsRef={constraintsRef} />}
+          </div>
+        </div>
       </div>
     </div>
   );
