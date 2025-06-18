@@ -194,3 +194,72 @@
   height: 10px;
   cursor: grab;
 }
+
+@media (max-width: 430px) {
+  .faux-wood-header {
+    width: 100vw;
+    font-size: 2rem;
+  }
+
+  .faux-measurement-header {
+    width: 100vw;
+    font-size: 1.5rem;
+  }
+
+  .faux-wood-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: auto;
+    width: 70vw;
+    max-width: 70vw;
+    flex-wrap: nowrap;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .faux-wood-fieldset {
+    width: 70vw;
+    max-width: 70vw;
+  }
+
+  .faux-input-one {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    max-width: 70vw;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .faux-wood-text-input {
+    width: 60vw;
+  }
+
+  .faux-input-two {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    max-width: 70vw;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .faux-cut-showcase {
+    width: 70vw;
+    max-width: 70vw;
+    font-size: 1rem;
+    padding-top: 1px;
+    text-align: center;
+  }
+
+  .faux-tape-measure-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 50vw;
+  }
+}
