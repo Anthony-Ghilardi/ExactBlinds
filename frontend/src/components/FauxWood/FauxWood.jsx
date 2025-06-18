@@ -4,7 +4,6 @@ import { Bounce } from "react-toastify";
 import "./faux-wood.css";
 import TapeMeasure from "../../TapeMeasure/TapeMeasure";
 import Navbar from "../Navbar/Navbar";
-import { motion } from "motion/react"
 
 export default function FauxWood() {
   const [OriginalValue, setOriginalValue] = useState("");
@@ -202,9 +201,11 @@ export default function FauxWood() {
           <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
         </div>
       )}
+      <div className="faux-tape-measure-btn-container">
       <button onClick={controlVisibility} className="faux-tape-measure-button">
         {IsHidden ? "Hide tape measure" : "Show tape measure"}
       </button>
+      </div>
       <div className="draggable-container">
         <div className={`${ToggleAnimation}`}>
           {ShouldRenderTape && (
