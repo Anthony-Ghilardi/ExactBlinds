@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { toast } from "react-toastify";
 import { Bounce } from "react-toastify";
 import "./faux-wood.css";
 import TapeMeasure from "../../TapeMeasure/TapeMeasure";
 import Navbar from "../Navbar/Navbar";
-import Draggable from "react-draggable";
+import { motion } from "motion/react"
 
 export default function FauxWood() {
   const [OriginalValue, setOriginalValue] = useState("");
@@ -14,6 +14,8 @@ export default function FauxWood() {
   const [ToggleAnimation, setToggleAnimation] = useState("fade-out");
   const [ShouldRenderTape, setShouldRenderTape] = useState(false);
   const [HideResult, setHideResult] = useState(false);
+  const constraintsRef = useRef(null);
+
 
   const handleOriginalInput = (event) => {
     const OriginalValue = event.target.value;
@@ -163,6 +165,7 @@ export default function FauxWood() {
   };
 
   return (
+    <div className="faux-wood-drag-container" ref={constraintsRef}>
     <div>
       <Navbar />
       <h1 className="faux-wood-header">Faux Wood Blinds</h1>
@@ -203,13 +206,13 @@ export default function FauxWood() {
         {IsHidden ? "Hide tape measure" : "Show tape measure"}
       </button>
       <div className="draggable-container">
-        <Draggable handle=".handle" bounds="parent" defaultPosition={{ x: 10, y: 450 }}>
-          <div className={`faux-tape-measure-container ${ToggleAnimation}`}>
-            <div className="handle">‎ </div>
-            {ShouldRenderTape && <TapeMeasure />}
-          </div>
-        </Draggable>
+        <div className={`${ToggleAnimation}`}>
+          {ShouldRenderTape && (
+            <TapeMeasure constraintsRef={constraintsRef} />
+            )}
+        </div>
       </div>
     </div>
+  </div>
   );
 }

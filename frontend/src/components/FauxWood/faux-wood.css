@@ -1,3 +1,11 @@
+.faux-wood-drag-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
 .faux-wood-header {
   display: flex;
   justify-content: center;
