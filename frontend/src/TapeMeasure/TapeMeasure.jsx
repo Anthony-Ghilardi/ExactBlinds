@@ -10,7 +10,7 @@ export default function TapeMeasure({ constraintsRef }) {
       dragConstraints={constraintsRef}
       dragElastic={0.2}
       initial={{ x: 10, y: 450 }}
-      style={{ position: "absolute", zIndex: 1200, boxSizing:"border-box" }}
+      style={{ position: "absolute", zIndex: 1200, width: 470, boxSizing:"border-box" }}
     >
       <div className="tape-measure-container">
         <img
