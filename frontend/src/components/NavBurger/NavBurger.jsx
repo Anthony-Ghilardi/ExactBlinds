@@ -4,13 +4,16 @@ import "./nav-burger.css";
 import logo from "../../images/ExactBlindsLogoTransparent.jpg";
 import { AuthContext } from "../../AuthProvider";
 
-export default function Navburger() {
+export default function Navburger({ closeTapeMeasure }) {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const location = useLocation();
   const { user } = useContext(AuthContext);
 
   const toggleHamburger = () => {
     setHamburgerOpen(!hamburgerOpen);
+    if(!hamburgerOpen) {
+      closeTapeMeasure();
+    }
   };
 
   return (

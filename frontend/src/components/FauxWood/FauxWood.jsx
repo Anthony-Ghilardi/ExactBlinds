@@ -15,7 +15,15 @@ export default function FauxWood() {
   const [HideResult, setHideResult] = useState(false);
   const constraintsRef = useRef(null);
 
-
+  function closeTapeMeasure() {
+    if (IsHidden) {
+      setToggleAnimation("fade-out");
+      setTimeout(() => {
+        setShouldRenderTape(false);
+        setIsHidden(false);
+      }, 400);
+    }
+  }
   const handleOriginalInput = (event) => {
     const OriginalValue = event.target.value;
     const regex = /^\s*(\d+)?(\s+(\d+\/?\d*)?)?$/;
@@ -165,55 +173,62 @@ export default function FauxWood() {
 
   return (
     <div className="faux-wood-drag-container" ref={constraintsRef}>
-    <div>
-      <Navbar />
-      <h1 className="faux-wood-header">Faux Wood Blinds</h1>
-      <h2 className="faux-measurement-header">
-        Please enter your measurements
-      </h2>
-      <form className="faux-wood-form" onSubmit={handleCut}>
-        <fieldset className="faux-wood-fieldset">
-          <label className="faux-input-one">
-            Enter the width of your current blind
+      <div>
+        <Navbar closeTapeMeasure={closeTapeMeasure}/>
+        <h1 className="faux-wood-header">Faux Wood Blinds</h1>
+        <h2 className="faux-measurement-header">
+          Please enter your measurements
+        </h2>
+        <form className="faux-wood-form" onSubmit={handleCut}>
+          <fieldset className="faux-wood-fieldset">
+            <label className="faux-input-one">
+              Enter the width of your current blind
+              <input
+                type="text"
+                className="faux-wood-text-input"
+                value={OriginalValue}
+                onChange={handleOriginalInput}
+                placeholder="Example: 30 1/2"
+              />
+            </label>
+            <label className="faux-input-two">
+              Enter the desired width of your blind
+              <input
+                type="text"
+                className="faux-wood-text-input"
+                value={DesiredValue}
+                onChange={handleDesiredInput}
+                placeholder="Example: 28 1/2"
+              />
+            </label>
             <input
-              type="text"
-              className="faux-wood-text-input"
-              value={OriginalValue}
-              onChange={handleOriginalInput}
-              placeholder="Example: 30 1/2"
+              type="submit"
+              value="Submit"
+              className="faux-submit-button"
             />
-          </label>
-          <label className="faux-input-two">
-            Enter the desired width of your blind
-            <input
-              type="text"
-              className="faux-wood-text-input"
-              value={DesiredValue}
-              onChange={handleDesiredInput}
-              placeholder="Example: 28 1/2"
-            />
-          </label>
-          <input type="submit" value="Submit" className="faux-submit-button" />
-        </fieldset>
-      </form>
-      {HideResult && (
-        <div className="faux-cut-showcase">
-          <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
+          </fieldset>
+        </form>
+        {HideResult && (
+          <div className="faux-cut-showcase">
+            <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
+          </div>
+        )}
+        <div className="faux-tape-measure-btn-container">
+          <button
+            onClick={controlVisibility}
+            className="faux-tape-measure-button"
+          >
+            {IsHidden ? "Hide tape measure" : "Show tape measure"}
+          </button>
         </div>
-      )}
-      <div className="faux-tape-measure-btn-container">
-      <button onClick={controlVisibility} className="faux-tape-measure-button">
-        {IsHidden ? "Hide tape measure" : "Show tape measure"}
-      </button>
-      </div>
-      <div className="draggable-container">
-        <div className={`${ToggleAnimation}`}>
-          {ShouldRenderTape && (
-            <TapeMeasure constraintsRef={constraintsRef} />
+        <div className="draggable-container">
+          <div className={`${ToggleAnimation}`}>
+            {ShouldRenderTape && (
+              <TapeMeasure constraintsRef={constraintsRef} />
             )}
+          </div>
         </div>
       </div>
     </div>
-  </div>
   );
 }

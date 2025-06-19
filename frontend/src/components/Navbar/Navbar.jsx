@@ -6,7 +6,7 @@ import { AuthContext } from "../../AuthProvider";
 import Navburger from "../NavBurger/NavBurger";
 
 
-export default function Navbar() {
+export default function Navbar({ closeTapeMeasure }) {
   const location = useLocation();
   const { user } = useContext(AuthContext);
 
@@ -43,7 +43,7 @@ export default function Navbar() {
         )}
       </div>
       <div>
-        <Navburger />
+        <Navburger closeTapeMeasure={closeTapeMeasure}/>
       </div>
     </nav>
   );
