@@ -15,6 +15,16 @@ export default function Vinyl() {
   const [HideResult, setHideResult] = useState(false);
   const constraintsRef = useRef(null);
 
+  function closeTapeMeasure() {
+    if (IsHidden) {
+      setToggleAnimation("fade-out");
+      setTimeout(() => {
+        setShouldRenderTape(false);
+        setIsHidden(false);
+      }, 400);
+    }
+  }
+
   const handleOriginalInput = (event) => {
     const OriginalValue = event.target.value;
     const regex = /^\s*(\d+)?(\s+(\d+\/?\d*)?)?$/;
@@ -165,7 +175,7 @@ export default function Vinyl() {
   return (
     <div className="vinyl-drag-container" ref={constraintsRef}>
       <div>
-        <Navbar />
+        <Navbar closeTapeMeasure={closeTapeMeasure}/>
         <h1 className="vinyl-header">Vinyl Blinds</h1>
         <h2 className="vinyl-measurement-header">
           Please enter your measurements
@@ -214,7 +224,9 @@ export default function Vinyl() {
         </div>
         <div className="draggable-container">
           <div className={`${ToggleAnimation}`}>
-            {ShouldRenderTape && <TapeMeasure constraintsRef={constraintsRef} />}
+            {ShouldRenderTape && (
+              <TapeMeasure constraintsRef={constraintsRef} />
+            )}
           </div>
         </div>
       </div>

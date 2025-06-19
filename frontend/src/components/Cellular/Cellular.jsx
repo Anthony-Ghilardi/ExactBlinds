@@ -15,6 +15,13 @@ export default function Cellular() {
   const [HideResult, setHideResult] = useState(false);
   const constraintsRef = useRef(null);
 
+  function closeTapeMeasure() {
+    if (IsHidden) {
+      setShouldRenderTape(false);
+      setIsHidden(false);
+    }
+  }
+
   const handleOriginalInput = (event) => {
     const OriginalValue = event.target.value;
     const regex = /^\s*(\d+)?(\s+(\d+\/?\d*)?)?$/;
@@ -165,7 +172,7 @@ export default function Cellular() {
   return (
     <div className="cellular-drag-container" ref={constraintsRef}>
       <div>
-        <Navbar />
+        <Navbar closeTapeMeasure={closeTapeMeasure}/>
         <h1 className="cellular-header">Cellular Shades</h1>
         <h2 className="cellular-measurement-header">
           Please enter your measurements
@@ -205,7 +212,10 @@ export default function Cellular() {
           </div>
         )}
         <div className="cellular-tape-measure-btn-container">
-          <button onClick={controlVisibility} className="cellular-tape-measure-button">
+          <button
+            onClick={controlVisibility}
+            className="cellular-tape-measure-button"
+          >
             {IsHidden ? "Hide tape measure" : "Show tape measure"}
           </button>
         </div>
