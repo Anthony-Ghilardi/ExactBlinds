@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { toast } from "react-toastify";
 import { Bounce } from "react-toastify";
 import "./cellular.css";
 import TapeMeasure from "../../TapeMeasure/TapeMeasure";
 import Navbar from "../Navbar/Navbar";
-import Draggable from "react-draggable";
 
 export default function Cellular() {
   const [OriginalValue, setOriginalValue] = useState("");
@@ -14,6 +13,7 @@ export default function Cellular() {
   const [ToggleAnimation, setToggleAnimation] = useState("fade-out");
   const [ShouldRenderTape, setShouldRenderTape] = useState(false);
   const [HideResult, setHideResult] = useState(false);
+  const constraintsRef = useRef(null);
 
   const handleOriginalInput = (event) => {
     const OriginalValue = event.target.value;
@@ -163,60 +163,60 @@ export default function Cellular() {
   };
 
   return (
-    <div>
-      <Navbar />
-      <h1 className="cellular-header">Cellular Shades</h1>
-      <h2 className="cellular-measurement-header">
-        Please enter your measurements
-      </h2>
-      <form className="cellular-form" onSubmit={handleCut}>
-        <fieldset className="cellular-fieldset">
-          <label className="cellular-input-one">
-            Enter the width of your current blind
+    <div className="cellular-drag-container" ref={constraintsRef}>
+      <div>
+        <Navbar />
+        <h1 className="cellular-header">Cellular Shades</h1>
+        <h2 className="cellular-measurement-header">
+          Please enter your measurements
+        </h2>
+        <form className="cellular-form" onSubmit={handleCut}>
+          <fieldset className="cellular-fieldset">
+            <label className="cellular-input-one">
+              Enter the width of your current blind
+              <input
+                type="text"
+                className="cellular-text-input"
+                value={OriginalValue}
+                onChange={handleOriginalInput}
+                placeholder="Example: 30 1/2"
+              />
+            </label>
+            <label className="cellular-input-two">
+              Enter the desired width of your blind
+              <input
+                type="text"
+                className="cellular-text-input"
+                value={DesiredValue}
+                onChange={handleDesiredInput}
+                placeholder="Example: 28 1/2"
+              />
+            </label>
             <input
-              type="text"
-              className="cellular-text-input"
-              value={OriginalValue}
-              onChange={handleOriginalInput}
-              placeholder="Example: 30 1/2"
+              type="submit"
+              value="Submit"
+              className="cellular-submit-button"
             />
-          </label>
-          <label className="cellular-input-two">
-            Enter the desired width of your blind
-            <input
-              type="text"
-              className="cellular-text-input"
-              value={DesiredValue}
-              onChange={handleDesiredInput}
-              placeholder="Example: 28 1/2"
-            />
-          </label>
-          <input
-            type="submit"
-            value="Submit"
-            className="cellular-submit-button"
-          />
-        </fieldset>
-      </form>
-      {HideResult && (
-        <div className="cellular-cut-showcase">
-          <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
+          </fieldset>
+        </form>
+        {HideResult && (
+          <div className="cellular-cut-showcase">
+            <h2>Your blind needs to be cut by {Cut} inch on both sides</h2>
+          </div>
+        )}
+        <div className="cellular-tape-measure-btn-container">
+          <button onClick={controlVisibility} className="cellular-tape-measure-button">
+            {IsHidden ? "Hide tape measure" : "Show tape measure"}
+          </button>
         </div>
-      )}
-        <button
-          onClick={controlVisibility}
-          className="cellular-tape-measure-button"
-        >
-          {IsHidden ? "Hide tape measure" : "Show tape measure"}
-        </button>
         <div className="draggable-container">
-          <Draggable handle=".handle" bounds="parent" defaultPosition={{ x: 10, y: 450 }}>
-            <div className={`cellular-tape-measure-container ${ToggleAnimation}`}>
-              <div className="handle">‎ </div>
-              {ShouldRenderTape && <TapeMeasure />}
-            </div>
-          </Draggable>
+          <div className={`${ToggleAnimation}`}>
+            {ShouldRenderTape && (
+              <TapeMeasure constraintsRef={constraintsRef} />
+            )}
+          </div>
         </div>
       </div>
+    </div>
   );
 }
