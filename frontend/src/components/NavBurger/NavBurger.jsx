@@ -11,7 +11,9 @@ export default function Navburger({ closeTapeMeasure }) {
 
   const toggleHamburger = () => {
     setHamburgerOpen(!hamburgerOpen);
-    if(!hamburgerOpen) {
+    if (location.pathname === "/howto") {
+      setHamburgerOpen(!hamburgerOpen)
+    } else {
       closeTapeMeasure();
     }
   };
@@ -19,7 +21,7 @@ export default function Navburger({ closeTapeMeasure }) {
   return (
     <div>
       <div className="nav-burger-container">
-        <button className="nav-burger-toggle" onClick={toggleHamburger}>
+        <button className="nav-burger-toggle" onClick={toggleHamburger} closeTapeMeasure={closeTapeMeasure}>
           <div className="nav-burger-items"></div>
           <div className="nav-burger-items"></div>
           <div className="nav-burger-items"></div>
