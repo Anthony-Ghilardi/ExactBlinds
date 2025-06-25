@@ -1,5 +1,5 @@
 .cellular-drag-container {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100vw;
@@ -347,7 +347,7 @@
 
   .cellular-measurement-header {
     width: 100vw;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .cellular-form {

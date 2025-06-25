@@ -16,14 +16,14 @@
   width: 470px;
 }
 
-@media (max-width: 430px) {
-  .tape-measure-container {
-    width: 400px;
-  }
-}
-
 @media (max-width: 768px) {
   .tape-measure-container {
     width: 420px;
+  }
+}
+
+@media (max-width: 430px) {
+  .tape-measure-container {
+    width: 360px;
   }
 }

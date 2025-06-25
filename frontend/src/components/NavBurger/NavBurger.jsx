@@ -11,7 +11,7 @@ export default function Navburger({ closeTapeMeasure }) {
 
   const toggleHamburger = () => {
     setHamburgerOpen(!hamburgerOpen);
-    if (location.pathname === "/howto") {
+    if (location.pathname === "/howto" || location.pathname === "/designer") {
       setHamburgerOpen(!hamburgerOpen)
     } else {
       closeTapeMeasure();

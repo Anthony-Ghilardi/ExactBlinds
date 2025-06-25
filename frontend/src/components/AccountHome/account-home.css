@@ -80,11 +80,39 @@
   }
 }
 
+@media (max-width: 2560px) {
+  .user-info-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    font-size: 4rem;
+  }
+
+  .user-info-text {
+    font-size: 1.5rem;
+  }
+
+  .user-info-btn {
+    width: 50%;
+    font-size: 2rem;
+  }
+}
+
 @media (max-width: 1440px) {
+ .user-info-header {
+  font-size: 2rem;
+ }
 
+ .user-info-text {
+  font-size: 1.2rem;
+ }
 
-    .user-info-btn {
-   width: 40%;
+  .user-info-btn {
+    width: 40%;
+    font-size: 1.5rem;
   }
 }
 
@@ -99,7 +127,7 @@
   }
 
   .user-info-btn {
-   width: 70%;
+    width: 70%;
   }
 }
 
@@ -114,7 +142,7 @@
   }
 
   .user-info-btn {
-   width: 80%;
+    width: 80%;
   }
 }
 
@@ -125,10 +153,12 @@
   }
 
   .user-info-text {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    padding-bottom: 20px;
   }
 
   .user-info-btn {
-   width: 80%;
+    width: 80%;
+    font-size: 1rem;
   }
 }

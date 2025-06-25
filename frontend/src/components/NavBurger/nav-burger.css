@@ -23,6 +23,7 @@
     top: 0;
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
+    z-index: 100;
 }
 
 .nav-burger-toggle {
@@ -35,6 +36,7 @@
 
 .nav-burger-menu.open {
   transform: translateX(0);
+  z-index: 9999;
 }
 
 .nav-burger-links-container {
@@ -45,6 +47,7 @@
     width: 100vw;
     height: 100vh;
     background-color: #fff;
+    position: relative;
 }
 
 .nav-burger-links {
