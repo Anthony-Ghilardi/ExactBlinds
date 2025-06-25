@@ -137,6 +137,9 @@ export default function FauxWood() {
           transition: Bounce,
         }
       );
+      setCut("");
+      setHideResult(false);
+      return;
     }
     setCut(Cut);
     setHideResult(true);
@@ -174,7 +177,7 @@ export default function FauxWood() {
   return (
     <div className="faux-wood-drag-container" ref={constraintsRef}>
       <div>
-        <Navbar closeTapeMeasure={closeTapeMeasure}/>
+        <Navbar closeTapeMeasure={closeTapeMeasure} />
         <h1 className="faux-wood-header">Faux Wood Blinds</h1>
         <h2 className="faux-measurement-header">
           Please enter your measurements

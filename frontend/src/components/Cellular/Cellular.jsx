@@ -135,6 +135,9 @@ export default function Cellular() {
           transition: Bounce,
         }
       );
+      setCut("");
+      setHideResult(false);
+      return;
     }
     setCut(Cut);
     setHideResult(true);
@@ -172,7 +175,7 @@ export default function Cellular() {
   return (
     <div className="cellular-drag-container" ref={constraintsRef}>
       <div>
-        <Navbar closeTapeMeasure={closeTapeMeasure}/>
+        <Navbar closeTapeMeasure={closeTapeMeasure} />
         <h1 className="cellular-header">Cellular Shades</h1>
         <h2 className="cellular-measurement-header">
           Please enter your measurements

@@ -138,6 +138,9 @@ export default function Vinyl() {
           transition: Bounce,
         }
       );
+      setCut("");
+      setHideResult(false);
+      return;
     }
     setCut(Cut);
     setHideResult(true);
@@ -175,7 +178,7 @@ export default function Vinyl() {
   return (
     <div className="vinyl-drag-container" ref={constraintsRef}>
       <div>
-        <Navbar closeTapeMeasure={closeTapeMeasure}/>
+        <Navbar closeTapeMeasure={closeTapeMeasure} />
         <h1 className="vinyl-header">Vinyl Blinds</h1>
         <h2 className="vinyl-measurement-header">
           Please enter your measurements
